@@ -70,6 +70,7 @@
       options: {
         datepickerContainer: '.container',
         selectContainer: '.select',
+        hideSelectsOnDatePicker: false,
         nextDayDelivery: true,
         nddCutoffTime: 15,
         useRange: true,
@@ -172,11 +173,11 @@
       toggleDatepicker: function () {
         if (this.isVisble) {
           $(this.options.datepickerContainer).hide();
-          $('.mini').show();
+          if (this.options.hideSelectsOnDatePicker) { $('.mini').show(); }
         } else {
           $(this.options.datepickerContainer).show();
           this.initTimeBar();
-          $('.mini').hide();
+          if (this.options.hideSelectsOnDatePicker) { $('.mini').hide(); }
         }
         this.isVisble = !this.isVisble;
         return this;
@@ -425,8 +426,8 @@
       getShortDate: function (day) {
         return util.applyTemplate('#{year}-#{month}-#{day}', {
           year: this.dates.current.fullYear,
-          month: this.dates.current.month,
-          day: day
+          month: this.padNumber(this.dates.current.month),
+          day: this.padNumber(day)
         });
       },
 
