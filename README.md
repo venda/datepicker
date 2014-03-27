@@ -13,6 +13,7 @@ It has range of options that, among other things, allow the user to:
 
   1. [Installation](#installation)
   1. [Options](#options)
+  1. [Output](#output)
   1. [To Do](#todo)
   1. [Animated Tour](#animatedtour)
   1. [Contributors](#contributors)
@@ -28,7 +29,10 @@ To get the development environment running locally on your machine <a href="http
   1. Change to the datepicker folder
   1. `npm install`
   1. `bower install`
-  1. `grunt server`
+
+### Run the development environment
+
+Do `grunt server`.
 
 ### Build the datepicker JavaScript only
 
@@ -46,6 +50,7 @@ The minimised application files will appear in the `dist` folder.
 
   1. [datepickerContainer](#datepickercontainer)
   1. [selectContainer](#selectcontainer)
+  1. [hideSelectsOnDatePicker](#hideselectsondatepicker)
   1. [nextDayDelivery](#nextDayDelivery)
   1. [nddCutoffTime](#nddCutoffTime)
   1. [useRange](#useRange)
@@ -79,7 +84,17 @@ Default: `.select`
 
 Example: `selectContainer: '.select'`
 
-### <a name='selectcontainer'>nextDayDelivery</a>
+### <a name='hideselectsondatepicker'>hideSelectsOnDatePicker</a>
+
+Hide the select boxes if the calendar is displayed.
+
+Type: `boolean`
+
+Default: `false`
+
+Example: `nextDayDelivery: true`
+
+### <a name='nextdaydelivery'>nextDayDelivery</a>
 
 Turn next day delivery off/on.
 
@@ -281,6 +296,12 @@ This tour was initiatlised with the following options:
 ```
 
 ![Tour](https://raw.githubusercontent.com/andywillis/VendaSandbox/master/datepicker/docs/images/datepicker.gif?token=1903595__eyJzY29wZSI6IlJhd0Jsb2I6YW5keXdpbGxpcy9WZW5kYVNhbmRib3gvbWFzdGVyL2RhdGVwaWNrZXIvZG9jcy9pbWFnZXMvZGF0ZXBpY2tlci5naWYiLCJleHBpcmVzIjoxMzk2NDQzODM2fQ%3D%3D--7766ca4ffa18e7cb82f4df8301919c8ab3bea660)
+
+## <a name='output'>Output</a>
+
+The selected date is held as an object in the format `{ date: '2014-02-03', time: 1200 }`.
+
+It can be retrieved using the Datepicker API using `Venda.Datepicker.getSelectedDateAndTime()`.
 
 ## <a name='contributors'>Contributors</a>
 
