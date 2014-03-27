@@ -18,6 +18,8 @@ It has range of options that, among other things, allow the user to:
 
 ## <a name='installation'>Installation</a>
 
+This installation requires <a href="http://nodejs.org/download">NodeJS</a> and <a href="http://gruntjs.com/getting-started">Grunt</a> to be installed.
+
   1. Clone the repo
   1. Change to the datepicker folder
   1. `npm install`
