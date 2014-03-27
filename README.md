@@ -20,11 +20,25 @@ It has range of options that, among other things, allow the user to:
 
 ## <a name='installation'>Local Installation</a>
 
+This development installation uses <a href="http://yeoman.io/">Yeoman</a>. <a href="http://nodejs.org/">NodeJS</a> and <a href="http://gruntjs.com/getting-started">Grunt</a> are prerequisites.
+
   1. Clone the repo
   1. Change to the datepicker folder
   1. `npm install`
   1. `bower install`
   1. `grunt server`
+
+### Build the datepicker JavaScript only
+
+Do `grunt jsbuild`. Minimised JavaScript and a source map file will appear in the `build` folder.
+
+### Build the whole application
+
+Do `grunt build`.
+
+If it fails either do `grunt build --force`, or install Ruby and Compass as they are the most likely culprits.
+
+The compress application will appear in the `dist` folder.
 
 ## <a name='options'>Options</a>
 
