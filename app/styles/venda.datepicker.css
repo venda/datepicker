@@ -1,0 +1,288 @@
+/* MAIN */
+
+
+
+  body {
+    font-family: arial;
+    font-size: 1em;
+  }
+
+.container {
+  display: none;
+  margin-top: 15px;
+}
+
+.fa-calendar,
+.select {
+  display: inline-block;
+}
+
+.select {
+  margin-right: 10px;
+}
+
+/* END MAIN */
+
+
+
+/* HEADER */
+
+  .adddate {
+    background-color: #80CC99;
+    border-radius: 10px;
+    color: black;
+    margin-left: 10px;
+  }
+
+  .adddate:hover {
+    cursor: pointer;
+  }
+
+  .availabledates {
+    margin: 0 10px 0 10px;
+  }
+
+  .fa-calendar {
+    margin-right: 10px;
+  }
+
+  .container .header {
+    width: 100%;
+    font-weight: bold;
+    border: 2px solid white;
+  }
+
+  .monthyear.large {
+    text-align: center;
+    width: 232px;
+  }
+
+  .monthyear.small {
+    width: 95px;
+    text-align: center;
+    font-size: 0.8em;
+    line-height: 1.4em;
+    margin: 0 10px 0 10px;
+  }
+
+  .direction {
+    opacity: 0.3;
+    color: white;
+    border: 1px solid #afafaf;
+    background: #02A7E7;
+    text-align: center;
+  }
+
+  .large {
+    width: 94px;
+  }
+
+  .direction.small {
+    width: 31px;
+    font-size: 0.8em;
+    line-height: 1.4em;
+  }
+
+  .direction.on {
+    opacity: 1;
+    transition: background .25s ease-in-out;
+    -moz-transition: background .25s ease-in-out;
+    -webkit-transition: background .25s ease-in-out;
+  }
+
+  .direction.on:hover {
+    background: #FFEF85;
+    color: black;
+    cursor: pointer;
+  }
+
+  .inline {
+    display: inline-block;
+  }
+
+
+
+/* END HEADER */
+
+
+
+
+/* SCROLL */
+
+  .scrollbar.active:hover {
+    border: 1px solid #676767;
+  }
+
+  .scrollbar.active {
+    background-color: #02A7E7;
+    border: 1px solid #02A7E7;
+    cursor: pointer;
+    color: white;
+  }
+
+  .scrollbar {
+    opacity: 1;
+    color: black;
+    background-color: #efefef;
+    border: 1px solid #efefef;
+    height: 20px;
+  }
+
+  .scrollbar.active:hover {
+    background-color: #FFEF85;
+    border: 1px solid #FFEF85;
+    color: black;
+  }
+
+  .scrolly {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 299px;
+    width: 80px;
+  }
+
+
+
+/* END SCROLL */
+
+
+/* WRAPPER */
+
+  .wrapper {
+    margin-top: 10px;
+    border: 1px solid #565656;
+    float: left;
+    /*background-color: #787878;*/
+    height: 343px !important;
+  }
+
+  .datepicker {
+    /*padding: 10px;*/
+    border-right: 1px solid #565656;
+  }
+
+  .times {
+    text-align: center;
+    background-color: white;
+  }
+
+  .times,
+  .datepicker {
+    float: left;
+  }
+
+  .datepicker-table {
+    border-collapse: collapse;
+    text-align: center;
+    /*margin: 1px 1px 1px 1px;*/
+  }
+
+  .today {
+    border: 2px dashed rgba(45, 108, 134, 0.6);
+  }
+
+  .today,
+  .outofrange,
+  .pastday {
+    color: #cfcfcf;
+  }
+
+  td {
+    background-color: white;
+  }
+
+  tbody td {
+    border: 1px solid #dfdfdf;
+  }
+
+  .inactive {
+    background-color: white;
+    color: #FFB2B2;
+    padding: 0;
+    font-family: arial;
+  }
+
+  .weekend {
+    background-color: #ffffee;
+  }
+
+  .datepicker-header-day {
+      border-top: 1px solid white;
+      border-right: 1px solid white;
+      border-bottom: 1px solid #efefef;
+      border-left: 1px solid white;
+  }
+
+  .pastday,
+  .datepicker-day,
+  .empty,
+  .outofrange {
+    border: 1px solid #dfdfdf;
+    padding: 15px;
+  }
+
+  .datetime,
+  .pastday,
+  .datepicker-day,
+  .empty {
+    transition: background .15s ease-in-out;
+    -moz-transition: background .15s ease-in-out;
+    -webkit-transition: background .15s ease-in-out;
+  }
+
+  .empty {
+    color: white;
+  }
+
+  .datetime:hover,
+  tbody td:hover {
+    cursor: pointer;
+  }
+
+  .datetime:hover,
+  .datepicker-day.active:hover {
+    background-color: #D6EBFF;
+  }
+
+  .container .header,
+  .container .daynames {
+    line-height: 2em;
+  }
+
+  .clicked,
+  .clicked:hover {
+    background-color: black !important;
+    color: white !important;
+  }
+
+  .datetime {
+    padding: 2px;
+    margin: 5px 0 5px 0;
+    border-bottom: 1px solid #efefef;
+  }
+
+
+
+/* END WRAPPER */
+
+/* OTHER */
+
+
+
+  .message {
+    margin-top: 10px;
+    float: left;
+    clear: both;
+  }
+
+  .fa-calendar:hover {
+    cursor: pointer;
+  }
+
+
+
+/* END OF OTHER */
