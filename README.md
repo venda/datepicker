@@ -13,6 +13,7 @@ It has range of options that, among other things, allow the user to:
 
   1. [Installation](#installation)
   1. [Options](#options)
+  1. [Output](#output)
   1. [To Do](#todo)
   1. [Animated Tour](#animatedtour)
   1. [Contributors](#contributors)
@@ -247,6 +248,8 @@ Example: `{ year: 2014, month: 8, day: 6 }`
 * Use floating div for expanded view.
 * Configure CSS.
 * Either add new 'add' button, or close down expanded view when date is selected.
+* Add getter for selected date
+* Correct output of date to two digits
 
 ## <a name='animatedtour'>Animated Tour</a>
 
@@ -281,6 +284,10 @@ This tour was initiatlised with the following options:
 ```
 
 ![Tour](https://raw.githubusercontent.com/andywillis/VendaSandbox/master/datepicker/docs/images/datepicker.gif?token=1903595__eyJzY29wZSI6IlJhd0Jsb2I6YW5keXdpbGxpcy9WZW5kYVNhbmRib3gvbWFzdGVyL2RhdGVwaWNrZXIvZG9jcy9pbWFnZXMvZGF0ZXBpY2tlci5naWYiLCJleHBpcmVzIjoxMzk2NDQzODM2fQ%3D%3D--7766ca4ffa18e7cb82f4df8301919c8ab3bea660)
+
+## <a name='output'>Output</a>
+
+The selected data is held as an object in `Venda.Datepicker.selectedDateAndTime` in the format `{ date="2014-2-30", time=1200 }`
 
 ## <a name='contributors'>Contributors</a>
 
