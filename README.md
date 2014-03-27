@@ -20,7 +20,9 @@ It has range of options that, among other things, allow the user to:
 
 ## <a name='installation'>Local Installation</a>
 
-This development installation uses <a href="http://yeoman.io/">Yeoman</a>. <a href="http://nodejs.org/">NodeJS</a> and <a href="http://gruntjs.com/getting-started">Grunt</a> are prerequisites.
+This application was developed with <a href="http://yeoman.io/">Yeoman</a>, the most useful tool of which was the auto-reload when a watched file changed.
+
+To get the development environment running locally on your machine <a href="http://nodejs.org/">NodeJS</a> and <a href="http://gruntjs.com/getting-started">Grunt</a> are prerequisites.
 
   1. Clone the repo
   1. Change to the datepicker folder
@@ -30,7 +32,7 @@ This development installation uses <a href="http://yeoman.io/">Yeoman</a>. <a hr
 
 ### Build the datepicker JavaScript only
 
-Do `grunt jsbuild`. Minimised JavaScript and a source map file will appear in the `build` folder.
+Do `grunt jsbuild`. Minimised versioned JavaScript and a source map file will appear in the `build` folder.
 
 ### Build the whole application
 
