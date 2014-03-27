@@ -38,7 +38,7 @@ Do `grunt build`.
 
 If it fails either do `grunt build --force`, or install Ruby and Compass as they are the most likely culprits.
 
-The compress application will appear in the `dist` folder.
+The minimised application files will appear in the `dist` folder.
 
 ## <a name='options'>Options</a>
 
