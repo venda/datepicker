@@ -17,7 +17,7 @@ Venda.Datepicker.init({
   scrollSpeed: 60,
   timeSeparationInMinutes: 30,
   showTimes: true,
-  startHour: 10,
+  startHour: 9,
   endHour: 22,
 
   inactive: {
