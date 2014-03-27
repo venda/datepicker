@@ -139,7 +139,7 @@
       },
 
       getTimeSelect: function () {
-        var html, options, template, hr, mi, thisTime, optionTmpl, option;
+        var html, options, thisTime, optionTmpl, option;
         options = [];
         optionTmpl = this.template.optionTime.join('');
         for (var i = 0, l = this.timeArray.length; i < l; i++) {
@@ -162,7 +162,7 @@
         timeSelect = this.getTimeSelect();
         addDate = this.template.addDate.join('');
         if (this.options.showTimes) {
-          this.html.select = header + daySelect + timeSelect + addDate;          
+          this.html.select = header + daySelect + timeSelect + addDate;
         } else {
           this.html.select = header + daySelect + addDate;
         }
@@ -463,7 +463,7 @@
       },
 
       createTimeList: function () {
-        var html, datetime, template, hr, mi, thisTime;
+        var html, datetime, template, thisTime;
         html = [];
         template = '<div class="datetime" data-time="#{time}">#{datetime}</div>';
         for (var i = 0, l = this.timeArray.length; i < l; i++) {
@@ -699,7 +699,7 @@
       });
 
       $(Datepicker.options.container).on('click', '.datetime', function () {
-        var time = $(this).data('time')
+        var time = $(this).data('time');
         Datepicker
           .changeTimeInDatepicker(time)
           .updateSelection('time', time)
