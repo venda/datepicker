@@ -287,7 +287,7 @@ This tour was initiatlised with the following options:
 
 ## <a name='output'>Output</a>
 
-The selected data is held as an object in `Venda.Datepicker.selectedDateAndTime` in the format `{ date="2014-2-30", time=1200 }`
+The selected date is held as an object in `Venda.Datepicker.selectedDateAndTime` in the format `{ date="2014-2-30", time=1200 }`
 
 ## <a name='contributors'>Contributors</a>
 
