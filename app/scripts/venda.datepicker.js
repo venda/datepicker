@@ -690,7 +690,7 @@
         });
       });
 
-      $(Datepicker.options.container).on('click', '.datepicker-day', function () {
+      $(Datepicker.options.datepickerContainer).on('click', '.datepicker-day', function () {
         var date = $(this).data('date');
         Datepicker
           .changeDateInDatepicker(date)
@@ -698,7 +698,7 @@
           .changeDateInSelect(date);
       });
 
-      $(Datepicker.options.container).on('click', '.datetime', function () {
+      $(Datepicker.options.datepickerContainer).on('click', '.datetime', function () {
         var time = $(this).data('time');
         Datepicker
           .changeTimeInDatepicker(time)
@@ -706,19 +706,20 @@
           .changeTimeInSelect(time);
       });
 
-      $(Datepicker.options.container).on('mousedown', '.scrollbar.up', function () {
+      $(Datepicker.options.datepickerContainer).on('mousedown', '.scrollbar.up', function () {
         if ($(this).hasClass('active')) {
           Datepicker.scrollStart('up');
         }
       });
 
-      $(Datepicker.options.container).on('mousedown', '.scrollbar.down', function () {
+      $(Datepicker.options.datepickerContainer).on('mousedown', '.scrollbar.down', function () {
         if ($(this).hasClass('active')) {
+          console.log('message');
           Datepicker.scrollStart('down');
         }
       });
 
-      $(Datepicker.options.container).on('mouseup', '.scrollbar.up, .scrollbar.down', function () {
+      $(Datepicker.options.datepickerContainer).on('mouseup', '.scrollbar.up, .scrollbar.down', function () {
         Datepicker.scrollStop();
       });
 

@@ -105,7 +105,8 @@ module.exports = function (grunt) {
 			},
 			build: {
 				src: ['.tmp', '<%= yeoman.build %>/*', '!<%= yeoman.build %>/.git*']
-			}
+			},
+			server: '.tmp'
 		},
 
 		jshint: {
@@ -292,11 +293,11 @@ module.exports = function (grunt) {
 		concurrent: {
 			server: [
 				'compass',
-				'coffee:dist',
+				//'coffee:dist',
 				'copy:styles'
 			],
 			test: [
-				'coffee',
+				//'coffee',
 				'copy:styles'
 			],
 			dist: [
