@@ -28,8 +28,8 @@ It has range of options that, among other things, allow the user to:
 
 ## <a name='options'>Options</a>
 
-  1. [calendarcontainer](#calendarcontainer)
-  1. [selectcontainer](#selectcontainer)
+  1. [datepickerContainer](#datepickercontainer)
+  1. [selectContainer](#selectcontainer)
   1. [nextDayDelivery](#nextDayDelivery)
   1. [nddCutoffTime](#nddCutoffTime)
   1. [useRange](#useRange)
@@ -43,7 +43,7 @@ It has range of options that, among other things, allow the user to:
   1. [endHour](#endHour)
   1. [inactive](#inactive)
 
-### <a name='calendarcontainer'>calendarcontainer</a>
+### <a name='datepickercontainer'>datepickerContainer</a>
 
 The name of the element that will contain the dropdown calendar.
 
@@ -51,7 +51,7 @@ Type: `selector`
 
 Default: `.container`
 
-Example: `calendarContainer: '.container'`
+Example: `datepickerContainer: '.container'`
 
 ### <a name='selectcontainer'>selectcontainer</a>
 
