@@ -286,7 +286,9 @@ This tour was initiatlised with the following options:
 
 ## <a name='output'>Output</a>
 
-The selected date is held as an object in `Venda.Datepicker.selectedDateAndTime` in the format `{ date="2014-2-30", time=1200 }`
+The selected date is held as an object in the format `{ date="2014-2-30", time=1200 }`.
+
+It can be retrieved using the Datepicker API using `Venda.Datepicker.getSelectedDateAndTime()`.
 
 ## <a name='contributors'>Contributors</a>
 
