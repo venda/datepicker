@@ -29,6 +29,9 @@ To get the development environment running locally on your machine <a href="http
   1. Change to the datepicker folder
   1. `npm install`
   1. `bower install`
+
+### Run the development environment
+
   1. `grunt server`
 
 ### Build the datepicker JavaScript only

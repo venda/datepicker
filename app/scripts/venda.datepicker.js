@@ -688,7 +688,7 @@
         return {
           init: this.init.bind(this),
           getSelectedDateAndTime: this.getSelectedDateAndTime.bind(this)
-        }
+        };
       }
 
     };
@@ -726,7 +726,6 @@
 
       $(Datepicker.options.datepickerContainer).on('mousedown', '.scrollbar.down', function () {
         if ($(this).hasClass('active')) {
-          console.log('message');
           Datepicker.scrollStart('down');
         }
       });
