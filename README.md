@@ -47,6 +47,7 @@ The minimised application files will appear in the `dist` folder.
 
   1. [datepickerContainer](#datepickercontainer)
   1. [selectContainer](#selectcontainer)
+  1. [hideSelectsOnDatePicker](#hideselectsondatepicker)
   1. [nextDayDelivery](#nextDayDelivery)
   1. [nddCutoffTime](#nddCutoffTime)
   1. [useRange](#useRange)
@@ -80,7 +81,17 @@ Default: `.select`
 
 Example: `selectContainer: '.select'`
 
-### <a name='selectcontainer'>nextDayDelivery</a>
+### <a name='hideselectsondatepicker'>hideSelectsOnDatePicker</a>
+
+Hide the select boxes if the calendar is displayed.
+
+Type: `boolean`
+
+Default: `false`
+
+Example: `nextDayDelivery: true`
+
+### <a name='nextdaydelivery'>nextDayDelivery</a>
 
 Turn next day delivery off/on.
 
