@@ -15,6 +15,7 @@ It has range of options that, among other things, allow the user to:
   1. [Options](#options)
   1. [Output](#output)
   1. [To Do](#todo)
+  1. [Version History](#versionhistory)
   1. [Animated Tour](#animatedtour)
   1. [Contributors](#contributors)
   1. [License](#license)
@@ -262,6 +263,12 @@ Example: `{ year: 2014, month: 8, day: 6 }`
 * Use floating div for expanded view.
 * Configure CSS.
 * Either add new 'add' button, or close down expanded view when date is selected.
+
+## <a name='todo'>To do</a>
+
+### 1.0.0
+
+Initial build.
 
 ## <a name='animatedtour'>Animated Tour</a>
 
