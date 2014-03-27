@@ -262,6 +262,7 @@ Example: `{ year: 2014, month: 8, day: 6 }`
 * Reset time list scroller.
 * Use floating div for expanded view.
 * Configure CSS.
+* Improve selectors.
 * Either add new 'add' button, or close down expanded view when date is selected.
 
 ## <a name='versionhistory'>Version History</a>
