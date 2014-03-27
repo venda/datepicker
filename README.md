@@ -264,7 +264,7 @@ Example: `{ year: 2014, month: 8, day: 6 }`
 * Configure CSS.
 * Either add new 'add' button, or close down expanded view when date is selected.
 
-## <a name='todo'>To do</a>
+## <a name='versionhistory'>Version History</a>
 
 ### 1.0.0
 
