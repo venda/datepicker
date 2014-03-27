@@ -68,8 +68,8 @@
       ],
 
       options: {
-        container: '.container',
-        select: '.select',
+        datepickerContainer: '.container',
+        selectContainer: '.select',
         nextDayDelivery: true,
         nddCutoffTime: 15,
         useRange: true,
