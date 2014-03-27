@@ -32,7 +32,7 @@ To get the development environment running locally on your machine <a href="http
 
 ### Run the development environment
 
-  1. `grunt server`
+Do `grunt server`.
 
 ### Build the datepicker JavaScript only
 
