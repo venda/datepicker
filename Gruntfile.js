@@ -120,7 +120,7 @@ module.exports = function (grunt) {
                 jshintrc: '.jshintrc'
             },
             single: {
-              src: ['<%= yeoman.app %>/scripts/venda.calendar.js']
+              src: ['<%= yeoman.app %>/scripts/venda.datepicker.js']
             },
             all: [
                 'Gruntfile.js',
@@ -242,7 +242,7 @@ module.exports = function (grunt) {
         },
         uglify: {
           single: {
-            my_target: {
+            //my_target: {
               options: {
                 sourceMap: true,
                 sourceMapName: '<%= yeoman.build %>/<%= pkg.name %>-<%= pkg.version %>.map'
@@ -250,7 +250,7 @@ module.exports = function (grunt) {
               files: {
                 '<%= yeoman.build %>/<%= pkg.name %>-<%= pkg.version %>.min.js': ['<%= yeoman.build %>/<%= pkg.name %>-<%= pkg.version %>.js']
               }
-            }          
+            //}          
           }
         },
         cssmin: {
@@ -319,8 +319,17 @@ module.exports = function (grunt) {
                     expand: true,
                     dot: true,
                     cwd: '<%= yeoman.app %>/scripts',
-                    dest: '<%= yeoman.build %>',
-                    src: 'venda.calendar.js'
+                    dest: '<%= pkg.name %>-<%= pkg.version %>.js',
+                    src: 'venda.datepicker.js'
+                }]
+            },
+            todist: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= yeoman.app %>/scripts',
+                    dest: '<%= yeoman.dist %>',
+                    src: 'venda.datepicker.js'
                 }]
             },
             styles: {
