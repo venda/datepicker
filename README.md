@@ -248,7 +248,6 @@ Example: `{ year: 2014, month: 8, day: 6 }`
 * Use floating div for expanded view.
 * Configure CSS.
 * Either add new 'add' button, or close down expanded view when date is selected.
-* Add getter for selected date
 * Correct output of date to two digits
 
 ## <a name='animatedtour'>Animated Tour</a>

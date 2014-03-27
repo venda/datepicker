@@ -677,6 +677,17 @@
           dateTime = this.selectedDateAndTime.date;
         }
         return this;
+      },
+
+      getSelectedDateAndTime: function () {
+        return this.selectedDateAndTime;
+      },
+
+      revealAPI: function () {
+        return {
+          init: this.init.bind(this),
+          getSelectedDateAndTime: this.getSelectedDateAndTime.bind(this)
+        }
       }
 
     };
@@ -743,7 +754,7 @@
 
     });
 
-    return Datepicker;
+    return Datepicker.revealAPI();
 
   }
 
