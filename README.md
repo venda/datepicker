@@ -35,6 +35,8 @@ To get the development environment running locally on your machine <a href="http
 
 Do `grunt server`.
 
+__Note:__ `venda.datepicker.js` requires the latest version of the venda utils library to work. This has been included in `app/scripts/Venda` folder.
+
 ### Build the datepicker JavaScript only
 
 Do `grunt jsbuild`. Minimised versioned JavaScript and a source map file will appear in the `build` folder.
@@ -52,17 +54,18 @@ The minimised application files will appear in the `dist` folder.
   1. [datepickerContainer](#datepickercontainer)
   1. [selectContainer](#selectcontainer)
   1. [hideSelectsOnDatePicker](#hideselectsondatepicker)
-  1. [nextDayDelivery](#nextDayDelivery)
-  1. [nddCutoffTime](#nddCutoffTime)
-  1. [useRange](#useRange)
-  1. [rangeInDays](#rangeInDays)
-  1. [firstDayDiff](#firstDayDiff)
-  1. [largeDeviceSmoothScroll](#largeDeviceSmoothScroll)
-  1. [scrollSpeed](#scrollSpeed)
-  1. [timeSeparation](#timeSeparation)
-  1. [showTimes](#showTimes)
-  1. [startHour](#startHour)
-  1. [endHour](#endHour)
+  1. [nextDayDelivery](#nextdaydelivery)
+  1. [nddCutoffTime](#nddcutofftime)
+  1. [highlightWeekends](#highlightweekends)
+  1. [useRange](#userange)
+  1. [rangeInDays](#rangeindays)
+  1. [firstDayDiff](#firstdaydiff)
+  1. [largeDeviceSmoothScroll](#largedevicesmoothscroll)
+  1. [scrollSpeed](#scrollspeed)
+  1. [timeSeparation](#timeseparation)
+  1. [showTimes](#showtimes)
+  1. [startHour](#starthour)
+  1. [endHour](#endhour)
   1. [inactive](#inactive)
 
 ### <a name='datepickercontainer'>datepickerContainer</a>
@@ -105,7 +108,7 @@ Default: `true`
 
 Example: `nextDayDelivery: true`
 
-### <a name='nddCutoffTime'>nddCutoffTime</a>
+### <a name='nddcutofftime'>nddCutoffTime</a>
 
 `nddCutoffTime` gives the hour that next day delivery becomes unavailable.
 
@@ -115,7 +118,17 @@ Default: `15`
 
 Example: `nddCutoffTime: 15`
 
-### <a name='useRange'>useRange</a>
+### <a name='highlightweekends'>highlightWeekends</a>
+
+Whether to highlight the weekends (CSS class `weekend`).
+
+Type: `boolean`
+
+Default: `true`
+
+Example: `highlightWeekends: true`
+
+### <a name='userange'>useRange</a>
 
 Whether a separate limiting delivery range is to be employed.
 
@@ -125,7 +138,7 @@ Default: `true`
 
 Example: `useRange: true`
 
-### <a name='rangeInDays'>rangeInDays</a>
+### <a name='rangeindays'>rangeInDays</a>
 
 Number of days in range.
 
@@ -135,7 +148,7 @@ Default: `14`
 
 Example: `rangeInDays: 14`
 
-### <a name='firstDayDiff'>firstDayDiff</a>
+### <a name='firstdaydiff'>firstDayDiff</a>
 
 Whether Sunday falls on the first or last day of the week.
 
@@ -147,7 +160,7 @@ Example 1: `firstDayDiff: 0` - Sunday falls on first day of week.
 
 Example 2: `firstDayDiff: 1` - Sunday falls on last day of week.
 
-### <a name='largeDeviceSmoothScroll'>largeDeviceSmoothScroll</a>
+### <a name='largedevicesmoothscroll'>largeDeviceSmoothScroll</a>
 
 For desktop devices, allow hold-down mouse button to scroll.
 
@@ -157,7 +170,7 @@ Default: `true`
 
 Example: `largeDeviceSmoothScroll: true`
 
-### <a name='scrollSpeed'>scrollSpeed</a>
+### <a name='scrollspeed'>scrollSpeed</a>
 
 Scroll speed of the time list.
 
@@ -165,7 +178,7 @@ Default: `80`
 
 Example: `scrollSpeed: 80`
 
-### <a name='timeSeparation'>timeSeparation</a>
+### <a name='timeseparation'>timeSeparation</a>
 
 The number of minutes by which the times in the time list are separated.
 
@@ -175,7 +188,7 @@ Default: `30`
 
 Example: `timeSeparation: 30`
 
-### <a name='showTimes'>showTimes</a>
+### <a name='showtimes'>showTimes</a>
 
 Show the time list or not.
 
@@ -185,7 +198,7 @@ Default: `true`
 
 Example: `showTimes: true`
 
-### <a name='startHour'>startHour</a>
+### <a name='starthour'>startHour</a>
 
 The first hour in the time list
 
@@ -195,7 +208,7 @@ Default: `9`
 
 Example: `startHour: 9`
 
-### <a name='endHour'>endHour</a>
+### <a name='endhour'>endHour</a>
 
 The last hour in the time list
 
@@ -262,6 +275,7 @@ Example: `{ year: 2014, month: 8, day: 6 }`
 * Reset time list scroller.
 * Use floating div for expanded view.
 * Configure CSS.
+* Improve selectors.
 * Either add new 'add' button, or close down expanded view when date is selected.
 
 ## <a name='versionhistory'>Version History</a>

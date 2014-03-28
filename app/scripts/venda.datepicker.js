@@ -74,6 +74,7 @@
         nextDayDelivery: true,
         nddCutoffTime: 15,
         useRange: true,
+        highlightWeekends: true,
         rangeInDays: 14,
         firstDayDiff: 1,
         largeDeviceSmoothScroll: true,
@@ -557,7 +558,7 @@
                 this.collateDatesForSelect(day);
               }
 
-              if (this.isWeekendDay(firstDay, day)) {
+              if (this.options.highlightWeekends && this.isWeekendDay(firstDay, day)) {
                 tdClass.push('weekend');
               }
 
