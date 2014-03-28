@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"bank",
+				"bankHolidays"
+			],
+			[
 				"mar",
 				"margin-left"
 			],
@@ -23,23 +27,23 @@
 			"file": "scripts/venda.datepicker.js",
 			"settings":
 			{
-				"buffer_size": 23370,
-				"line_ending": "Windows"
+				"buffer_size": 24828,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "scripts/main.js",
 			"settings":
 			{
-				"buffer_size": 777,
-				"line_ending": "Windows"
+				"buffer_size": 990,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/C/Development/code/git/VendaSandbox/datepicker/README.md",
+			"file": "scripts/uk-bank-holidays.json",
 			"settings":
 			{
-				"buffer_size": 5708,
+				"buffer_size": 16326,
 				"line_ending": "Windows"
 			}
 		}
@@ -47,9 +51,17 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 359.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"m",
+				"Markdown Preview: Github Flavored Markdown: Preview in Browser"
+			],
+			[
+				"ma",
+				"Markdown Preview: Github Flavored Markdown: Preview in Browser"
+			],
 			[
 				"mark",
 				"Markdown Preview: Github Flavored Markdown: Preview in Browser"
@@ -99,11 +111,42 @@
 	},
 	"file_history":
 	[
-		"/C/Development/code/git/VendaSandbox/datepicker/README.md",
-		"/C/Development/code/git/VendaSandbox/datepicker/app/scripts/main.js",
+		"/C/Development/code/git/datepicker/app/scripts/venda.datepicker.js",
+		"/C/Development/code/git/datepicker/app/scripts/main.js",
+		"/C/Development/code/git/datepicker/app/scripts/uk-bank-holidays.json",
+		"/C/Development/code/git/datepicker/README.md",
+		"/P/Andy/Conference 5 - Store Locator/index.html",
+		"/C/Development/code/git/datepicker/app/index.html",
+		"/C/Development/code/git/VendaSandbox/Solr/app/index.html",
+		"/C/Development/code/git/VendaSandbox/Solr/app/styles/solr.css",
+		"/C/Development/code/git/VendaSandbox/StoreLocator/app/scripts/venda.storelocator.js",
+		"/C/Development/code/git/datepicker/app/styles/venda.datepicker.css",
+		"/C/Development/code/git/datepicker/Gruntfile.js",
+		"/C/Development/code/git/Archive/solr2/Gruntfile.js",
+		"/C/Development/code/git/datepicker/package.json",
+		"/C/Development/code/git/Archive/datepicker/Gruntfile.js",
+		"/C/Development/code/git/Archive/datepicker/.jshintrc",
+		"/C/Development/code/git/Archive/datepicker/package.json",
+		"/C/Development/code/git/Archive/datepicker/node_modules/matchdep/lib/matchdep.js",
+		"/C/Development/code/git/Archive/datepicker/node_modules/grunt/lib/grunt/task.js",
+		"/C/Development/code/git/Archive/datepicker/node_modules/matchdep/package.json",
+		"/C/Development/code/git/Archive/datepicker/node_modules/grunt-contrib-clean/tasks/clean.js",
+		"/C/Development/code/git/VendaSandbox/datepicker/Gruntfile.js",
+		"/C/Development/code/git/datepicker/.gitignore",
+		"/C/Development/code/git/datepicker/test/spec/test.js",
+		"/C/Development/code/git/VendaSandbox/datepicker/package.json",
+		"/C/Development/code/git/VendaSandbox/datepicker/node_modules/grunt-contrib-uglify/package.json",
+		"/C/Development/code/git/VendaSandbox/datepicker/node_modules/grunt-contrib-uglify/README.md",
+		"/C/Development/code/git/VendaSandbox/datepicker/build/venda.datepicker-1.0.0.min.js",
+		"/C/Development/code/git/VendaSandbox/datepicker/build/venda.datepicker-1.0.0.js",
 		"/C/Development/code/git/VendaSandbox/datepicker/app/index.html",
-		"/C/Development/code/git/VendaSandbox/datepicker/app/styles/venda.datepicker.css",
+		"/C/Development/code/git/VendaSandbox/datepicker/app/scripts/main.js",
+		"/C/Users/awillis/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Development/code/git/datepicker/dist/venda.datepicker.js",
+		"/C/Development/code/git/andywillis.github.io/index.html",
+		"/C/Development/code/git/VendaSandbox/datepicker/README.md",
 		"/C/Development/code/git/VendaSandbox/datepicker/app/scripts/venda.datepicker.js",
+		"/C/Development/code/git/VendaSandbox/datepicker/app/styles/venda.datepicker.css",
 		"/C/Development/code/git/javascript/README.md",
 		"/C/Development/code/git/VendaSandbox/calendar/app/scripts/main.js",
 		"/C/Development/code/git/VendaSandbox/calendar/app/scripts/venda.calendar.js",
@@ -119,8 +162,6 @@
 		"/C/Development/code/git/ScriptsAndDotfiles/workflow/.jshintrc",
 		"/C/Development/code/git/ScriptsAndDotfiles/workflow/README.md",
 		"/C/Development/code/git/VendaSandbox/datepicker/.jshintrc",
-		"/C/Development/code/git/VendaSandbox/StoreLocator/app/scripts/venda.storelocator.js",
-		"/C/Users/awillis/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/C/Development/code/git/VendaSandbox/StoreLocator/app/index.html",
 		"/C/Users/awillis/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings"
 	],
@@ -137,9 +178,46 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+			"isinac",
+			"isin",
+			"isinac",
+			"isinactive",
+			"inactive",
+			"this.inAc",
+			"codev",
+			"this.pad",
+			"pad",
+			"getshortd",
+			"data-d",
+			"$(",
+			"scrolly",
+			"times",
+			".times",
+			"times",
+			"$(",
+			"mess",
+			"inlin",
+			"inline",
+			"mini",
+			"option",
+			"<option",
+			"option",
+			"changed",
+			"updatese",
+			"updatesl",
+			".date-picker-datetime",
+			".datetime",
+			"datetime",
+			"applicationn",
+			"coffee",
+			"copy",
+			"tasks",
+			"tab",
+			"datepickerc",
+			"venda.calendar.js",
 			"useRange",
 			"/*",
 			"timeSeparation",
@@ -179,6 +257,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			".datepicker-times",
+			".datepicker-datetime",
+			".date-picker-datetime",
+			"venda.datepicker.js",
 			"timeSeparationInMinutes",
 			"Datepicker",
 			"datepicker",
@@ -199,7 +281,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -208,15 +290,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 23370,
+						"buffer_size": 24828,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								23233,
-								23233
+								13132,
+								13132
 							]
 						],
 						"settings":
@@ -226,27 +308,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 13736.0,
+						"translation.y": 7713.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
 					"file": "scripts/main.js",
-					"semi_transient": true,
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 777,
+						"buffer_size": 990,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								519,
-								519
+								442,
+								442
 							]
 						],
 						"settings":
@@ -259,39 +341,35 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "/C/Development/code/git/VendaSandbox/datepicker/README.md",
+					"file": "scripts/uk-bank-holidays.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5708,
+						"buffer_size": 16326,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								600,
-								600
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"parser": "github",
-							"syntax": "Packages/Markdown/Markdown.tmLanguage",
-							"tab_size": 2,
-							"target": "disk",
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 1.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

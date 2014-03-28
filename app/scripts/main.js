@@ -1,8 +1,11 @@
 Venda.Datepicker.init({
 
+  region: 'scotland',
+  makeBankHolidaysInactive: true,
+
   datepickerContainer: '.container',
   selectContainer: '.select',
-  nextDayDelivery: true,
+  nextDayDelivery: false,
   hideSelectsOnDatePicker: false,
 
   // 24 hr.
@@ -23,7 +26,11 @@ Venda.Datepicker.init({
 
   inactive: {
     monthsStartAtZero: true,
+
+    // need to rethink this: probably more efficient to use indexOf
+    // on an array of '2014-01-01' types instead...
     dates: [
+      { year: 2014, month: 2, day: 30 },
       { year: 2014, month: 8, day: 6 },
       { year: 2014, month: 2, day: 6 },
       { year: 2014, month: 2, day: 11 },
