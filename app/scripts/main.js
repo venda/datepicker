@@ -10,6 +10,7 @@ Venda.Datepicker.init({
 
   useRange: true,
   rangeInDays: 14,
+  highlightWeekends: false,
 
   // 0 or 1
   firstDayDiff: 1,
