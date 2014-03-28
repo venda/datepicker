@@ -35,6 +35,8 @@ To get the development environment running locally on your machine <a href="http
 
 Do `grunt server`.
 
+__Note:__ `venda.datepicker.js` requires the latest version of the venda utils library to work. This has been included in `app/scripts/Venda` folder.
+
 ### Build the datepicker JavaScript only
 
 Do `grunt jsbuild`. Minimised versioned JavaScript and a source map file will appear in the `build` folder.
