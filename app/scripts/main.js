@@ -1,8 +1,5 @@
 Venda.Datepicker.init({
 
-  region: 'scotland',
-  makeBankHolidaysInactive: true,
-
   datepickerContainer: '.container',
   selectContainer: '.select',
   nextDayDelivery: true,

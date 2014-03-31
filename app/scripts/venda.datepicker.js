@@ -59,13 +59,11 @@
       dates: {},
       checks: {},
       selectDates: [],
-      bankHolidays: [],
       isVisble: false,
       days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 
       options: {
         region: 'england-and-wales',
-        makeBankHolidaysInactive: true,
         datepickerContainer: '.container',
         selectContainer: '.select',
         hideSelectsOnDatePicker: false,
@@ -86,22 +84,10 @@
       init: function (options) {
         this
           .setOptions(options)
-          .loadBankHolidays()
           .getNow()
           .createTimeArray()
           .createTimeList()
           .calculateDatepicker();
-        return this;
-      },
-
-      loadBankHolidays: function () {
-        var _this = this;
-        $.getJSON('scripts/uk-bank-holidays.json', function (data) {
-          var events = data[_this.options.region].events;
-          for (var i = 0, l = events.length; i < l; i++) {
-            _this.bankHolidays.push(events[i].date);
-          }
-        });
         return this;
       },
 
@@ -579,7 +565,6 @@
 
               if (isInactiveDay
                 || (this.isNextDay(day) && !this.isNextDayDeliveryPossible(day))
-                || (this.options.makeBankHolidaysInactive && this.bankHolidays.indexOf(shortdate) > -1)
                 ) {
                 html.push('<td class="', tdClass.join(' '), '">', 'X', '</td>');
               } else {
