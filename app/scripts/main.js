@@ -25,19 +25,9 @@ Venda.Datepicker.init({
   endHour: 22,
 
   inactive: {
-    monthsStartAtZero: true,
-
-    // need to rethink this: probably more efficient to use indexOf
-    // on an array of '2014-01-01' types instead...
+    monthsStartAtZero: false,
     dates: [
-      { year: 2014, month: 2, day: 30 },
-      { year: 2014, month: 8, day: 6 },
-      { year: 2014, month: 2, day: 6 },
-      { year: 2014, month: 2, day: 11 },
-      { year: 2014, month: 2, day: 20 },
-      { year: 2014, month: 3, day: 10 },
-      { year: 2014, month: 3, day: 2 },
-      { year: 2014, month: 4, day: 12 }
+      '2014-02-30', '2014-04-11'
     ]
   }
 

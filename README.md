@@ -220,7 +220,7 @@ Example: `endHour: 22`
 
 ### <a name='inactive'>inactive</a>
 
-An object that contains an array of date objects that are to be set as inactive in the calendar, and an identification parameter to determine whether January is the zeroth or first month in the year.
+An object that contains an array of dates that are to be set as inactive in the calendar, and an identification parameter to determine whether January is the zeroth or first month in the year.
 
 Type: `object`
 
@@ -229,15 +229,9 @@ Default: `none`
 Example:
 ```js
 inactive: {
-    monthsStartAtZero: true,
+    monthsStartAtZero: false,
     dates: [
-      { year: 2014, month: 8, day: 6 },
-      { year: 2014, month: 2, day: 6 },
-      { year: 2014, month: 2, day: 11 },
-      { year: 2014, month: 2, day: 20 },
-      { year: 2014, month: 3, day: 10 },
-      { year: 2014, month: 3, day: 2 },
-      { year: 2014, month: 4, day: 12 }
+      '2014-02-30', '2014-04-11'
     ]
   }
 ```
@@ -256,15 +250,15 @@ Example: `monthsStartAtZero: true`
 
 ##### dates
 
-An array of date objects to be labelled inactive.
+An array of dates to be labelled inactive. Single digit numbers must be padded out with zeros.
 
 Type: `array`
 
 Default: `none`
 
-Format: `{ year, month, day }`
+Format: `year-month-day`
 
-Example: `{ year: 2014, month: 8, day: 6 }`
+Example: `2014-08-06`
 
 ## <a name='todo'>To do</a>
 
@@ -302,15 +296,9 @@ This tour was initiatlised with the following options:
   startHour: 9,
   endHour: 22,
   inactive: {
-    monthsStartAtZero: true,
+    monthsStartAtZero: false,
     dates: [
-      { year: 2014, month: 8, day: 6 },
-      { year: 2014, month: 2, day: 6 },
-      { year: 2014, month: 2, day: 11 },
-      { year: 2014, month: 2, day: 20 },
-      { year: 2014, month: 3, day: 10 },
-      { year: 2014, month: 3, day: 2 },
-      { year: 2014, month: 4, day: 12 }
+      '2014-02-30', '2014-04-11'
     ]
   }
 }

@@ -11,7 +11,7 @@
 
     Datepicker = {
 
-      version: '0.0.1',
+      version: '1.0.0',
 
       template: {
         wrapper: [
@@ -93,7 +93,7 @@
           .setOptions(options)
           .loadBankHolidays()
           .getNow()
-          .processDisabledDates()
+//          .processDisabledDates()
           .createTimeArray()
           .createTimeList()
           .calculateDatepicker();
@@ -208,7 +208,7 @@
         return this;
       },
 
-      processDisabledDates: function () {
+/*      processDisabledDates: function () {
         var date, disabledDate, nowDate;
         if (this.options.inactive.dates) {
           for (var i = 0, l = this.options.inactive.dates.length; i < l; i++) {
@@ -225,7 +225,7 @@
         }
         return this;
       },
-
+*/
       calculateDatepicker: function (obj) {
         this
           .clearSelectedDate()
@@ -426,23 +426,21 @@
       },
 
       hasInactiveDates: function () {
-        return this.options.inactive.dates ? true : false;
+        return this.options.inactive.dates.length > 0 ? true : false;
       },
 
       isInactive: function (day) {
-        var disabled, found, current;
+        var current, date;
         current = this.dates.current;
-        found = false;
-        for (var i = 0, l = this.options.inactive.dates.length; i < l; i++) {
-          disabled = this.options.inactive.dates[i];
-          if (day === disabled.day &&
-               current.month === disabled.month &&
-               current.fullYear === disabled.year) {
-            found = true;
-            break;
-          }
+        if (this.options.inactive.monthsStartAtZero) {
+          date = current.fullYear + '-' + this.padNumber(current.month) + '-' + this.padNumber(day);
+        } else {
+          date = current.fullYear + '-' + this.padNumber(current.month + 1) + '-' + this.padNumber(day);
         }
-        return found;
+        if (this.options.inactive.dates.indexOf(date) > -1) {
+          return true;
+        }
+        return false;
       },
 
       getShortDate: function (day) {
@@ -545,7 +543,7 @@
       generateDatepicker: function () {
 
         var tdClass, firstDay, startingDay, monthLength, html, day, i, j,
-            isDatepickerDay, today, week, shortdate;
+            isDatepickerDay, today, week, shortdate, isInactiveDay;
 
         html = [];
         day = 1;
@@ -563,6 +561,7 @@
             tdClass = [];
             isDatepickerDay = (day <= monthLength && (i > 0 || j >= startingDay));
             shortdate = this.getShortDate(day);
+            isInactiveDay = this.hasInactiveDates() && this.isInactive(day);
 
             if (isDatepickerDay) {
 
@@ -570,7 +569,7 @@
                 tdClass.push('today');
               } else if (this.isPreviousDay(day)) {
                 tdClass.push('pastday');
-              } else if (this.hasInactiveDates() && this.isInactive(day)
+              } else if (isInactiveDay
                 || (this.isNextDay(day) && !this.isNextDayDeliveryPossible(day))) {
                 tdClass.push('inactive');
               } else if (this.options.useRange && !this.isWithinRange(day)) {
@@ -584,7 +583,7 @@
                 tdClass.push('weekend');
               }
 
-              if (this.hasInactiveDates() && this.isInactive(day)
+              if (isInactiveDay
                 || (this.isNextDay(day) && !this.isNextDayDeliveryPossible(day))
                 || (this.options.makeBankHolidaysInactive && this.bankHolidays.indexOf(shortdate) > -1)
                 ) {
