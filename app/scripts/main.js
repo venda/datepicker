@@ -1,7 +1,7 @@
 Venda.Datepicker.init({
 
-  region: 'scotland',
-  makeBankHolidaysInactive: true,
+  region: 'england-and-wales',
+  deactivateBankHolidays: true,
 
   datepickerContainer: '.container',
   selectContainer: '.select',
@@ -11,7 +11,7 @@ Venda.Datepicker.init({
   // 24 hr.
   nddCutoffTime: 13,
 
-  useRange: true,
+  useRange: false,
   rangeInDays: 2,
   highlightWeekends: false,
 
