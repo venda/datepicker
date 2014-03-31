@@ -5,14 +5,14 @@ Venda.Datepicker.init({
 
   datepickerContainer: '.container',
   selectContainer: '.select',
-  nextDayDelivery: false,
+  nextDayDelivery: true,
   hideSelectsOnDatePicker: false,
 
   // 24 hr.
-  nddCutoffTime: 15,
+  nddCutoffTime: 13,
 
   useRange: true,
-  rangeInDays: 14,
+  rangeInDays: 2,
   highlightWeekends: false,
 
   // 0 or 1
