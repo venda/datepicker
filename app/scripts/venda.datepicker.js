@@ -516,7 +516,7 @@
       },
 
       isNextDay: function (day) {
-        var now, first, current, next;
+        var now, current;
         if (this.isFirstDayInMonth(day)) {
           current = this.createDate(this.dates.current.fullYear, this.dates.current.month, day);
           now = this.createDate(this.dates.now.fullYear, this.dates.now.month, this.dates.now.day);
