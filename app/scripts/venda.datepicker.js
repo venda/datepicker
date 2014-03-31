@@ -63,10 +63,7 @@
       selectDates: [],
       bankHolidays: [],
       isVisble: false,
-      days: [
-        'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
-        'Friday', 'Saturday'
-      ],
+      days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 
       options: {
         region: 'england-and-wales',
@@ -93,7 +90,6 @@
           .setOptions(options)
           .loadBankHolidays()
           .getNow()
-//          .processDisabledDates()
           .createTimeArray()
           .createTimeList()
           .calculateDatepicker();
@@ -208,24 +204,6 @@
         return this;
       },
 
-/*      processDisabledDates: function () {
-        var date, disabledDate, nowDate;
-        if (this.options.inactive.dates) {
-          for (var i = 0, l = this.options.inactive.dates.length; i < l; i++) {
-            date = this.options.inactive.dates[i];
-            if (!this.options.inactive.monthsStartAtZero) { date.month = date.month - 1; }
-            disabledDate = new Date(date.year, date.month, 0).getTime();
-            nowDate = new Date(this.dates.now.fullYear, this.dates.now.month, 0).getTime();
-            if (disabledDate < nowDate) {
-              this.options.inactive.dates.splice(i, 1);
-              i--;
-              l--;
-            }
-          }
-        }
-        return this;
-      },
-*/
       calculateDatepicker: function (obj) {
         this
           .clearSelectedDate()
@@ -542,7 +520,7 @@
 
       generateDatepicker: function () {
 
-        var tdClass, firstDay, startingDay, monthLength, html, day, i, j,
+        var tdClass, firstDay, startingDay, monthLength, html, day,
             isDatepickerDay, today, week, shortdate, isInactiveDay;
 
         html = [];
@@ -554,9 +532,9 @@
         if (startingDay === - 1) { startingDay = 6; }
         monthLength = this.getDaysInMonth(this.dates.current.month, this.dates.current.fullYear);
 
-        for (i = 0; i < 9; i++) {
+        for (var i = 0; i < 9; i++) {
 
-          for (j = 0; j <= 6; j++) {
+          for (var j = 0; j <= 6; j++) {
 
             tdClass = [];
             isDatepickerDay = (day <= monthLength && (i > 0 || j >= startingDay));
@@ -778,7 +756,7 @@
 
     });
 
-    return Datepicker; //Datepicker.revealAPI();
+    return Datepicker.revealAPI();
 
   }
 
