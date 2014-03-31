@@ -521,12 +521,11 @@
       generateDatepicker: function () {
 
         var tdClass, firstDay, startingDay, monthLength, html, day,
-            isDatepickerDay, today, week, shortdate, isInactiveDay;
+            isDatepickerDay, week, shortdate, isInactiveDay;
 
         html = [];
         day = 1;
         week = 1;
-        today = this.dates.current.date;
         firstDay = new Date(this.dates.current.fullYear, this.dates.current.month, 1);
         startingDay = firstDay.getDay() - this.options.firstDayDiff;
         if (startingDay === - 1) { startingDay = 6; }
