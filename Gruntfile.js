@@ -25,6 +25,7 @@ module.exports = function (grunt) {
 	};
 
 	var pkg = grunt.file.readJSON('package.json');
+	var ext = '.js';
 
 	grunt.initConfig({
 		yeoman: yeomanConfig,
@@ -114,7 +115,7 @@ module.exports = function (grunt) {
 				jshintrc: '.jshintrc'
 			},
 			single: {
-				src: ['<%= yeoman.app %>/scripts/venda.calendar.js']
+				src: ['<%= yeoman.app %>/scripts/<%= pkg.name %>.js']
 			},
 			all: [
 				'Gruntfile.js',
@@ -203,6 +204,8 @@ module.exports = function (grunt) {
 		uglify: {
 			single: {
 				options: {
+					mangle: true,
+					compress: true,
 					sourceMap: true,
 					sourceMapName: '<%= yeoman.build %>/<%= pkg.name %>-<%= pkg.version %>.map'
 				},
