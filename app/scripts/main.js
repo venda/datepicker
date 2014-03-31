@@ -1,8 +1,11 @@
 Venda.Datepicker.init({
 
+  region: 'scotland',
+  makeBankHolidaysInactive: true,
+
   datepickerContainer: '.container',
   selectContainer: '.select',
-  nextDayDelivery: true,
+  nextDayDelivery: false,
   hideSelectsOnDatePicker: false,
 
   // 24 hr.
@@ -22,15 +25,9 @@ Venda.Datepicker.init({
   endHour: 22,
 
   inactive: {
-    monthsStartAtZero: true,
+    monthsStartAtZero: false,
     dates: [
-      { year: 2014, month: 8, day: 6 },
-      { year: 2014, month: 2, day: 6 },
-      { year: 2014, month: 2, day: 11 },
-      { year: 2014, month: 2, day: 20 },
-      { year: 2014, month: 3, day: 10 },
-      { year: 2014, month: 3, day: 2 },
-      { year: 2014, month: 4, day: 12 }
+      '2014-02-30', '2014-04-11'
     ]
   }
 

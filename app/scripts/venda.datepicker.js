@@ -11,7 +11,7 @@
 
     Datepicker = {
 
-      version: '0.0.1',
+      version: '1.0.0',
 
       template: {
         wrapper: [
@@ -61,13 +61,13 @@
       dates: {},
       checks: {},
       selectDates: [],
+      bankHolidays: [],
       isVisble: false,
-      days: [
-        'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
-        'Friday', 'Saturday'
-      ],
+      days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 
       options: {
+        region: 'england-and-wales',
+        makeBankHolidaysInactive: true,
         datepickerContainer: '.container',
         selectContainer: '.select',
         hideSelectsOnDatePicker: false,
@@ -88,11 +88,22 @@
       init: function (options) {
         this
           .setOptions(options)
+          .loadBankHolidays()
           .getNow()
-          .processDisabledDates()
           .createTimeArray()
           .createTimeList()
           .calculateDatepicker();
+        return this;
+      },
+
+      loadBankHolidays: function () {
+        var _this = this;
+        $.getJSON('scripts/uk-bank-holidays.json', function (data) {
+          var events = data[_this.options.region].events;
+          for (var i = 0, l = events.length; i < l; i++) {
+            _this.bankHolidays.push(events[i].date);
+          }
+        });
         return this;
       },
 
@@ -190,22 +201,6 @@
 
       setOptions: function (options) {
         this.options = $.extend(this.options, options);
-        return this;
-      },
-
-      processDisabledDates: function () {
-        var date, disabledDate, nowDate;
-        for (var i = 0, l = this.options.inactive.dates.length; i < l; i++) {
-          date = this.options.inactive.dates[i];
-          if (!this.options.inactive.monthsStartAtZero) { date.month = date.month - 1; }
-          disabledDate = new Date(date.year, date.month, 0).getTime();
-          nowDate = new Date(this.dates.now.fullYear, this.dates.now.month, 0).getTime();
-          if (disabledDate < nowDate) {
-            this.options.inactive.dates.splice(i, 1);
-            i--;
-            l--;
-          }
-        }
         return this;
       },
 
@@ -408,20 +403,22 @@
           && day < this.dates.now.day;
       },
 
+      hasInactiveDates: function () {
+        return this.options.inactive.dates.length > 0 ? true : false;
+      },
+
       isInactive: function (day) {
-        var disabled, found, current;
+        var current, date;
         current = this.dates.current;
-        found = false;
-        for (var i = 0, l = this.options.inactive.dates.length; i < l; i++) {
-          disabled = this.options.inactive.dates[i];
-          if (day === disabled.day &&
-               current.month === disabled.month &&
-               current.fullYear === disabled.year) {
-            found = true;
-            break;
-          }
+        if (this.options.inactive.monthsStartAtZero) {
+          date = current.fullYear + '-' + this.padNumber(current.month) + '-' + this.padNumber(day);
+        } else {
+          date = current.fullYear + '-' + this.padNumber(current.month + 1) + '-' + this.padNumber(day);
         }
-        return found;
+        if (this.options.inactive.dates.indexOf(date) > -1) {
+          return true;
+        }
+        return false;
       },
 
       getShortDate: function (day) {
@@ -523,24 +520,25 @@
 
       generateDatepicker: function () {
 
-        var tdClass, firstDay, startingDay, monthLength, html, day, i, j,
-            isDatepickerDay, today, week;
+        var tdClass, firstDay, startingDay, monthLength, html, day,
+            isDatepickerDay, week, shortdate, isInactiveDay;
 
         html = [];
         day = 1;
         week = 1;
-        today = this.dates.current.date;
         firstDay = new Date(this.dates.current.fullYear, this.dates.current.month, 1);
         startingDay = firstDay.getDay() - this.options.firstDayDiff;
         if (startingDay === - 1) { startingDay = 6; }
         monthLength = this.getDaysInMonth(this.dates.current.month, this.dates.current.fullYear);
 
-        for (i = 0; i < 9; i++) {
+        for (var i = 0; i < 9; i++) {
 
-          for (j = 0; j <= 6; j++) {
+          for (var j = 0; j <= 6; j++) {
 
             tdClass = [];
             isDatepickerDay = (day <= monthLength && (i > 0 || j >= startingDay));
+            shortdate = this.getShortDate(day);
+            isInactiveDay = this.hasInactiveDates() && this.isInactive(day);
 
             if (isDatepickerDay) {
 
@@ -548,7 +546,7 @@
                 tdClass.push('today');
               } else if (this.isPreviousDay(day)) {
                 tdClass.push('pastday');
-              } else if (this.isInactive(day)
+              } else if (isInactiveDay
                 || (this.isNextDay(day) && !this.isNextDayDeliveryPossible(day))) {
                 tdClass.push('inactive');
               } else if (this.options.useRange && !this.isWithinRange(day)) {
@@ -562,13 +560,15 @@
                 tdClass.push('weekend');
               }
 
-              if (this.isInactive(day)
-                || (this.isNextDay(day) && !this.isNextDayDeliveryPossible(day))) {
+              if (isInactiveDay
+                || (this.isNextDay(day) && !this.isNextDayDeliveryPossible(day))
+                || (this.options.makeBankHolidaysInactive && this.bankHolidays.indexOf(shortdate) > -1)
+                ) {
                 html.push('<td class="', tdClass.join(' '), '">', 'X', '</td>');
               } else {
                 tdClass.push('active');
                 html.push('<td data-date="');
-                html.push(this.getShortDate(day));
+                html.push(shortdate);
                 html.push('" class="');
                 html.push(tdClass.join(' '));
                 html.push('">');
