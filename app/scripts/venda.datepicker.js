@@ -11,8 +11,6 @@
 
     Datepicker = {
 
-      version: '1.0.0',
-
       template: {
         wrapper: [
           '#{header}',
@@ -505,9 +503,28 @@
         return Math.floor((utc2 - utc1) / msPerDay);
       },
 
+      isLastDayInMonth: function (day) {
+        return day === this.getDaysInMonth(this.dates.current.month, this.dates.current.year);
+      },
+
+      isFirstDayInMonth: function (day) {
+        return day === 1;
+      },
+
+      createDate: function (year, month, day) {
+        return new Date(year, month, day);
+      },
+
       isNextDay: function (day) {
-        return this.datepickerShowsCurrentMonthAndYear() &&
-           day - this.dates.current.day === 1;
+        var now, first, current, next;
+        if (this.isFirstDayInMonth(day)) {
+          current = this.createDate(this.dates.current.fullYear, this.dates.current.month, day);
+          now = this.createDate(this.dates.now.fullYear, this.dates.now.month, this.dates.now.day);
+          return current.getDay() - now.getDay() === 1;
+        } else {
+          return this.datepickerShowsCurrentMonthAndYear() &&
+            day - this.dates.current.day === 1;
+        }
       },
 
       isWithinRange: function (day) {
@@ -755,7 +772,7 @@
 
     });
 
-    return Datepicker.revealAPI();
+    return Datepicker;// Datepicker.revealAPI();
 
   }
 
