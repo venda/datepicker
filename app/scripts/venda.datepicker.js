@@ -75,7 +75,6 @@
 
       options: {
         language: 'en',
-        multiLang: false,
         region: 'england-and-wales',
         deactivateBankHolidays: true,
         datepickerContainer: '.container',
