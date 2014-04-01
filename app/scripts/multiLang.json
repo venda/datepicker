@@ -1,0 +1,30 @@
+{
+  "de": {
+    "days": ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
+    "fullDays": ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
+    "months": ["Jan", "Feb", "März", "Apr", "Mai", "Juni", "Juli", "Aug", "sept", "Okt", "Nov", "Dez"],
+    "fullMonths": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+    "format": "DD.MM.YYYY hh:mm"
+  },
+  "it": {
+    "days": ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"],
+    "fullDays": ["domenica", "lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato"],
+    "months": ["genn", "febbr.", "mar.", "apr.", "magg.", "giugno", "luglio", "ag.", "sett.", "ott.", "nov.", "dic"],
+    "fullMonths": ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"],
+    "format": "DD/MM/YYYY hh:mm"
+  },
+  "es": {
+    "days": ["dom", "lun", "mar", "miér", "jue", "vié", "sáb"],
+    "fullDays": ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
+    "months": ["enero", "feb.", "marzo", "abr.", "mayo", "jun.", "jul.", "agosto", "sept.", "oct.", "nov.", "dic."],
+    "fullMonths": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+    "format": "DD/MM/YYYY hh:mm"
+  },
+  "fr": {
+    "days": ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
+    "fullDays": ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"],
+    "months": ["janv.", "févr.", "mars", "avril", "mai", "juin", "juil.", "août", "sep", "oct", "nov", "déc."],
+    "fullMonths": ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+    "format": "DD-MM-YYYY hh:mm"
+  }
+}
