@@ -353,7 +353,7 @@ This tour was initiatlised with the following options:
 }
 ```
 
-![Tour](https://raw.githubusercontent.com/andywillis/VendaSandbox/master/datepicker/docs/images/datepicker.gif?token=1903595__eyJzY29wZSI6IlJhd0Jsb2I6YW5keXdpbGxpcy9WZW5kYVNhbmRib3gvbWFzdGVyL2RhdGVwaWNrZXIvZG9jcy9pbWFnZXMvZGF0ZXBpY2tlci5naWYiLCJleHBpcmVzIjoxMzk2NDQzODM2fQ%3D%3D--7766ca4ffa18e7cb82f4df8301919c8ab3bea660)
+![Tour](https://raw.githubusercontent.com/venda/datepicker/master/docs/images/datepicker.gif)
 
 ## <a name='output'>Output</a>
 
