@@ -1,5 +1,6 @@
 Venda.Datepicker.init({
 
+  language: 'es',
   region: 'england-and-wales',
   deactivateBankHolidays: true,
 
@@ -8,14 +9,12 @@ Venda.Datepicker.init({
   nextDayDelivery: true,
   hideSelectsOnDatePicker: false,
 
-  // 24 hr.
   nddCutoffTime: 13,
 
   useRange: false,
   rangeInDays: 2,
   highlightWeekends: false,
 
-  // 0 or 1
   firstDayDiff: 1,
   largeDeviceSmoothScroll: true,
   scrollSpeed: 60,
