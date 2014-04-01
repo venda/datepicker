@@ -51,6 +51,9 @@ The minimised application files will appear in the `dist` folder.
 
 ## <a name='options'>Options</a>
 
+  1. [language](#language)
+  1. [region](#region)
+  1. [deactivateBankHolidays](#deactivatebankholidays)
   1. [datepickerContainer](#datepickercontainer)
   1. [selectContainer](#selectcontainer)
   1. [hideSelectsOnDatePicker](#hideselectsondatepicker)
@@ -67,6 +70,48 @@ The minimised application files will appear in the `dist` folder.
   1. [startHour](#starthour)
   1. [endHour](#endhour)
   1. [inactive](#inactive)
+
+### <a name='language'>language</a>
+
+The language in which the calendar will display. 
+
+Current choices are:
+
+* `en`: English
+* `es`: Spanish
+* `fr`: French
+* `ge`: German
+* `it`: Italian
+
+__Note:__ all languages other than English are held in a separate JSON file. They will only be loaded if the language option is set to anything other than `en`.
+
+Type: `string`
+
+Default: `'en'`
+
+Example: `language: 'en'`
+
+### <a name='region'>region</a>
+
+The current region. This is used to identify bank holidays.
+
+Type: `string`
+
+Default: `england-and-wales`
+
+Example: `region: 'england-and-wales'`
+
+### <a name='deactivatebankholidays'>deactivateBankHolidays</a>
+
+Making this option `true` will disable the calendar for the bank holidays for the specified region.
+
+__Note:__ the bank holiday information is held in a separate JSON file and will only be loaded if this option is selected. The JSON data is from the [UK Govt. website](https://www.gov.uk/bank-holidays.json) and only goes up to the end of 2015. This data will need to be refreshed when necessary.
+
+Type: `boolean`
+
+Default: `true`
+
+Example: `deactivateBankHolidays: true`
 
 ### <a name='datepickercontainer'>datepickerContainer</a>
 
@@ -262,7 +307,6 @@ Example: `2014-08-06`
 
 ## <a name='todo'>To do</a>
 
-* Multi-language support.
 * Allow half-hours under `nddCutoffTime`.
 * Allow half-hours under `startTime` and `endTime`.
 * Time options to be full 24hr values.
@@ -273,6 +317,11 @@ Example: `2014-08-06`
 * Either add new 'add' button, or close down expanded view when date is selected.
 
 ## <a name='versionhistory'>Version History</a>
+
+### 1.1.0
+
+* Added bank holiday functionality.
+* Added multi-language (en, fr, ge, es, it) functionality.
 
 ### 1.0.0
 

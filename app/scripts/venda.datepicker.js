@@ -61,9 +61,21 @@
       selectDates: [],
       bankHolidays: [],
       isVisble: false,
-      days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+
+      lang: {
+        en: {
+          days: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+          fullDays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+          months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
+          fullMonths: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+          sep: '-',
+          format: 'YYYY-MM-DD hh:mm'
+        }
+      },
 
       options: {
+        language: 'en',
+        multiLang: false,
         region: 'england-and-wales',
         deactivateBankHolidays: true,
         datepickerContainer: '.container',
@@ -84,18 +96,28 @@
       },
 
       init: function (options) {
+        var _this = this;
         this
           .setOptions(options)
-          .loadBankHolidays()
           .getNow()
-          .createTimeArray()
-          .createTimeList()
-          .calculateDatepicker();
+          .loadDependancies(function () {
+            _this
+              .createTimeArray()
+              .createTimeList()
+              .calculateDatepicker();
+          });
+        return this;
+      },
+
+      loadDependancies: function (callback) {
+        $.when(this.loadBankHolidays(), this.loadMultiLang()).then(callback);
         return this;
       },
 
       loadBankHolidays: function () {
-        var _this = this;
+        var _this, deferred;
+        _this = this;
+        deferred = new $.Deferred();
         if (this.options.deactivateBankHolidays) {
           $.getJSON('scripts/uk-bank-holidays.json', function (data) {
             var events = data[_this.options.region].events;
@@ -103,9 +125,27 @@
               _this.bankHolidays.push(events[i].date);
             }
             _this.convertDatesToZeroMonthFormat(_this.bankHolidays);
+            deferred.resolve();
           });
+        } else {
+          deferred.resolve();
         }
-        return this;
+        return deferred.promise();
+      },
+
+      loadMultiLang: function () {
+        var _this, deferred;
+        _this = this;
+        deferred = new $.Deferred();
+        if (this.options.language !== 'en') {
+          $.getJSON('scripts/multiLang.json', function (data) {
+            _this.lang = data;
+            deferred.resolve();
+          });
+        } else {
+          deferred.resolve();
+        }
+        return deferred.promise();
       },
 
       convertDatesToZeroMonthFormat: function (array) {
@@ -310,14 +350,11 @@
       },
 
       getDayLabels: function () {
-        return ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        return this.lang[this.options.language].days;
       },
 
       getMonthLabel: function (i) {
-        return [
-          'January', 'February', 'March', 'April', 'May', 'June',
-          'July', 'August', 'September', 'October', 'November', 'December'
-        ][i];
+        return this.lang[this.options.language].fullMonths[i];
       },
 
       rearrangeLabels: function () {
@@ -460,7 +497,7 @@
         var date, dayName, month;
         date = new Date(this.dates.current.fullYear, this.dates.current.month, day);
         day = date.getDate();
-        dayName = this.days[date.getDay()];
+        dayName = this.lang[this.options.language].fullDays[date.getDay()];
         month = this.getMonthLabel(date.getMonth());
         return dayName + ' ' + day;
       },
