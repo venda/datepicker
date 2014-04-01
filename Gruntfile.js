@@ -107,6 +107,7 @@ module.exports = function (grunt) {
 			build: {
 				src: ['.tmp', '<%= yeoman.build %>/*', '!<%= yeoman.build %>/.git*']
 			},
+			oldversion: '<%= yeoman.build %>/<%= pkg.name %>-<%= pkg.version %>.js',
 			server: '.tmp'
 		},
 
@@ -210,7 +211,7 @@ module.exports = function (grunt) {
 					sourceMapName: '<%= yeoman.build %>/<%= pkg.name %>-<%= pkg.version %>.map'
 				},
 				files: {
-				'<%= yeoman.build %>/<%= pkg.name %>-<%= pkg.version %>.min.js': ['<%= yeoman.build %>/<%= pkg.name %>-<%= pkg.version %>.js']
+					'<%= yeoman.build %>/<%= pkg.name %>-<%= pkg.version %>.min.js': ['<%= yeoman.build %>/<%= pkg.name %>-<%= pkg.version %>.js']
 				}
 			}
 		},
@@ -252,6 +253,16 @@ module.exports = function (grunt) {
 			}
 		},
 
+		concat: {
+			options: {
+	      separator: ';',
+	    },
+	    dist: {
+	      src: ['<%= yeoman.build %>/<%= pkg.name %>-<%= pkg.version %>.min.js', '<%= yeoman.build %>/multiLang.json', '<%= yeoman.build %>/uk-bank-holidays.json'],
+	      dest: '<%= yeoman.build %>/merged-<%= pkg.version %>.js',
+	    },
+		},
+
 		copy: {
 			dist: {
 				files: [{
@@ -277,11 +288,14 @@ module.exports = function (grunt) {
 			},
 			tobuild: {
 				files: [{
-					//expand: true,
-					//dot: true,
-					//cwd: '<%= yeoman.app %>/scripts',
 					dest: '<%= yeoman.build %>/<%= pkg.name %>-<%= pkg.version %>.js',
 					src: '<%= yeoman.app %>/scripts/venda.datepicker.js'
+				},{
+					src: '<%= yeoman.app %>/scripts/multiLang.json',
+					dest: '<%= yeoman.build %>/multiLang.json'
+				},{
+					src: '<%= yeoman.app %>/scripts/uk-bank-holidays.json',
+					dest: '<%= yeoman.build %>/uk-bank-holidays.json'
 				}]
 			},
 			styles: {
@@ -291,6 +305,12 @@ module.exports = function (grunt) {
 				dest: '.tmp/styles/',
 				src: '{,*/}*.css'
 			}
+		},
+
+		'json-minify': {
+		  build: {
+		    files: 'build/*.json'
+		  }
 		},
 
 		concurrent: {
@@ -350,7 +370,9 @@ module.exports = function (grunt) {
 	'clean:build',
 	'copy:tobuild',
 	'jshint:single',
-	'uglify:single'
+	'uglify:single',
+	'json-minify',
+	'clean:oldversion',
 	]);
 
 	grunt.registerTask('default', [
