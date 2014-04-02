@@ -1,7 +1,7 @@
 Venda.Datepicker.init({
 
   language: 'en',
-  region: 'scotland',
+  region: 'england-and-wales',
   deactivateBankHolidays: true,
 
   datepickerContainer: '.container',
