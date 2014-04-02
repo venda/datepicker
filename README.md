@@ -269,7 +269,11 @@ Example: `endHour: 22`
 
 ### <a name='inactive'>inactive</a>
 
-An object that contains an array of dates that are to be set as inactive in the calendar, and an identification parameter to determine whether January is the zeroth or first month in the year.
+An object that contains:
+
+  * an array of dates that are to be set as inactive in the calendar
+  * an array that allows you to block out specific cells - useful for blocking out everyone of a specific day. This works off the cell's position (`0 to 6`) in the calendar grid and is not related to the day number or name. `[6]`, therefore, would block out each day that sits in the last column in the calendar.
+  * an identification parameter to determine whether January is the zeroth or first month in the year
 
 Type: `object`
 
@@ -279,6 +283,7 @@ Example:
 ```js
 inactive: {
     monthsStartAtZero: false,
+    blockDay: [6],
     dates: [
       '2014-02-30', '2014-04-11'
     ]
@@ -321,6 +326,10 @@ Example: `2014-08-06`
 * Either add new 'add' button, or close down expanded view when date is selected.
 
 ## <a name='versionhistory'>Version History</a>
+
+### 1.2.0
+
+* Option to block out entire columns of days.
 
 ### 1.1.0
 
