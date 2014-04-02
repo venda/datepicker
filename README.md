@@ -327,16 +327,6 @@ Example: `2014-08-06`
 
 ## <a name='versionhistory'>Version History</a>
 
-### 1.2.0
-
-* Option to block out entire columns of days.
-* Fixed table formatting.
-
-### 1.1.0
-
-* Added bank holiday functionality.
-* Added multi-language (en, fr, ge, es, it) functionality.
-
 ### 1.0.0
 
 Initial build.
