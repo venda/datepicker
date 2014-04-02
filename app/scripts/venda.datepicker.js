@@ -73,25 +73,30 @@
         }
       },
 
-      options: {
+      defaultOptions: {
         language: 'en',
         region: 'england-and-wales',
         deactivateBankHolidays: true,
         datepickerContainer: '.container',
         selectContainer: '.select',
-        hideSelectsOnDatePicker: false,
         nextDayDelivery: true,
+        hideSelectsOnDatePicker: false,
         nddCutoffTime: 15,
-        useRange: true,
-        highlightWeekends: true,
+        useRange: false,
         rangeInDays: 14,
+        highlightWeekends: true,
         firstDayDiff: 1,
         largeDeviceSmoothScroll: true,
         scrollSpeed: 80,
         timeSeparationInMinutes: 30,
         showTimes: true,
         startHour: 9,
-        endHour: 22
+        endHour: 22,
+        inactive: {
+          monthsStartAtZero: false,
+          blockDay: [],
+          dates: []
+        }
       },
 
       init: function (options) {
@@ -266,7 +271,7 @@
       },
 
       setOptions: function (options) {
-        this.options = $.extend(this.options, options);
+        this.options = $.extend(this.defaultOptions, options);
         return this;
       },
 
@@ -654,11 +659,9 @@
                 tdClass.push('weekend');
               }
 
-              if (isInactiveDay || isBlockDay
+              if (isInactiveDay || isBlockDay || isBankHoliday
                 || (this.isNextDay(day) && !this.isNextDayDeliveryPossible(day))) {
-                html.push('<td class="', tdClass.join(' '), '">', 'X', '</td>');
-              } else if (isBankHoliday) {
-                html.push('<td class="', tdClass.join(' '), '">', 'BH', '</td>');
+                html.push('<td class="', tdClass.join(' '), '">', '', '</td>');
               } else {
                 tdClass.push('active');
                 html.push('<td data-date="');
@@ -853,7 +856,7 @@
 
     });
 
-    return Datepicker;// Datepicker.revealAPI();
+    return Datepicker.revealAPI();
 
   }
 
