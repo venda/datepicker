@@ -271,9 +271,9 @@ Example: `endHour: 22`
 
 An object that contains:
 
-  * an array of dates that are to be set as inactive in the calendar
-  * an array that allows you to block out specific cells - useful for blocking out everyone of a specific day. This works off the cell's position (`0 to 6`) in the calendar grid and is not related to the day number or name. `[6]`, therefore, would block out each day that sits in the last column in the calendar.
-  * an identification parameter to determine whether January is the zeroth or first month in the year
+  * `monthsStartAtZero`: an identification parameter to determine whether January is the zeroth or first month in the year
+  * `blockDay`: an array that allows you to block out specific columns so that, for example, "all Sundays" can be made inactive. This works off the column number (`0 to 6`) in the calendar grid. `[6]`, therefore, would block out each day that sits in the last column.
+  * `dates`: an array of dates that are to be set as inactive in the calendar
 
 Type: `object`
 
@@ -330,6 +330,7 @@ Example: `2014-08-06`
 ### 1.2.0
 
 * Option to block out entire columns of days.
+* Fixed table formatting.
 
 ### 1.1.0
 
