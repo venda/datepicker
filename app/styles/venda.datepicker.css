@@ -54,7 +54,7 @@
 
   .monthyear.large {
     text-align: center;
-    width: 232px;
+    width: 245px;
   }
 
   .monthyear.small {
@@ -176,9 +176,16 @@
   }
 
   .datepicker-table {
+    table-layout: fixed;
+    width: ;
     border-collapse: collapse;
     text-align: center;
     /*margin: 1px 1px 1px 1px;*/
+  }
+
+  .datepicker-table td {
+    overflow: hidden;
+    width: 20px;
   }
 
   .today {
