@@ -93,7 +93,11 @@ Example: `language: 'en'`
 
 ### <a name='region'>region</a>
 
-The current region. This is used to identify bank holidays.
+The current region. This is used to identify bank holidays. A region can be one of the following:
+
+  * `england-and-wales`
+  * `scotland`
+  * `northern-ireland`
 
 Type: `string`
 
