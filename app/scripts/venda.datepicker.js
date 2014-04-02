@@ -594,6 +594,10 @@
         }
       },
 
+      isBlockedDay: function (day) {
+        return this.options.inactive.blockDay.indexOf(day) >= 0;
+      },
+
       isWithinRange: function (day) {
         var todayDate, nowDate, diff;
         todayDate = new Date(this.dates.current.fullYear, this.dates.current.month, day);
@@ -605,7 +609,8 @@
       generateDatepicker: function () {
 
         var tdClass, firstDay, startingDay, monthLength, html, day,
-            isDatepickerDay, week, shortdate, isInactiveDay, isBankHoliday;
+            isDatepickerDay, week, shortdate, isInactiveDay, isBankHoliday,
+            isBlockDay;
 
         html = [];
         day = 1;
@@ -626,6 +631,7 @@
             isBankHoliday = this.options.deactivateBankHolidays
               && this.bankHolidays.length > 0
               && this.isBankHoliday(shortdate) > -1;
+            isBlockDay = this.isBlockedDay(j);
 
             if (isDatepickerDay) {
 
@@ -633,7 +639,7 @@
                 tdClass.push('today');
               } else if (this.isPreviousDay(day)) {
                 tdClass.push('pastday');
-              } else if (isInactiveDay || isBankHoliday
+              } else if (isInactiveDay || isBankHoliday || isBlockDay
                 || (this.isNextDay(day) && !this.isNextDayDeliveryPossible(day))
                 ) {
                 tdClass.push('inactive');
@@ -648,9 +654,8 @@
                 tdClass.push('weekend');
               }
 
-              if (isInactiveDay
-                || (this.isNextDay(day) && !this.isNextDayDeliveryPossible(day))
-                ) {
+              if (isInactiveDay || isBlockDay
+                || (this.isNextDay(day) && !this.isNextDayDeliveryPossible(day))) {
                 html.push('<td class="', tdClass.join(' '), '">', 'X', '</td>');
               } else if (isBankHoliday) {
                 html.push('<td class="', tdClass.join(' '), '">', 'BH', '</td>');

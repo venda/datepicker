@@ -1,7 +1,7 @@
 Venda.Datepicker.init({
 
-  language: 'es',
-  region: 'england-and-wales',
+  language: 'en',
+  region: 'scotland',
   deactivateBankHolidays: true,
 
   datepickerContainer: '.container',
@@ -25,6 +25,7 @@ Venda.Datepicker.init({
 
   inactive: {
     monthsStartAtZero: false,
+    blockDay: [6],
     dates: [
       '2014-02-30', '2014-04-11'
     ]
