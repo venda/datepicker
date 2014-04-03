@@ -311,9 +311,6 @@ Example: `2014-08-06`
 * Allow half-hours under `startTime` and `endTime`.
 * Time options to be full 24hr values.
 * Reset time list scroller.
-* Use floating div for expanded view.
-* Configure CSS.
-* Improve selectors.
 * Either add new 'add' button, or close down expanded view when date is selected.
 
 ## <a name='versionhistory'>Version History</a>
