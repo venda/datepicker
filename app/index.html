@@ -12,20 +12,17 @@
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 		<!-- build:css(.tmp) styles/main.css -->
 		<link rel="stylesheet" href="styles/venda.datepicker.css">
-		<!--<link rel="stylesheet" href="scripts/external/datepicker/jquery.simple-dtpicker.css">-->
-		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<!-- endbuild -->
 		<!-- build:js scripts/vendor/modernizr.js -->
-		<script src="bower_components/modernizr/modernizr.js"></script>
+		<!--<script src="bower_components/modernizr/modernizr.js"></script>-->
 		<!-- endbuild -->
 	</head>
 	<body>
-    <i class="fa fa-calendar"></i>
-    <div class="mini inline">
-      <div class="select"></div>
-    </div>
-		<div class="container"></div>
-    <div class="message"></div>
+		<div id="dp-container"></div>
+		<div class="text"><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p></div>
+		<form style="display:none">
+			<input name="selecteddatetime" value="" />
+		</form>
 
 		<!--[if lt IE 7]>
 			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -43,8 +40,6 @@
 
 		<!-- build:js scripts/main.js -->
 		<script src="bower_components/jquery/jquery.js"></script>
-		<!--<script type="text/javascript" src="scripts/external/datepicker/jquery.simple-dtpicker.js"></script>-->
-		<script type="text/javascript" src="scripts/Venda/venda-util-1.0.0.min.js"></script>
 		<script src="scripts/venda.datepicker.js"></script>
 		<script src="scripts/main.js"></script>
 		<!-- endbuild -->

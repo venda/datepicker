@@ -2,12 +2,14 @@
 
 Datepicker allows a user to select a certain date and/or time.
 
-It has range of options that, among other things, allow the user to:
+It has range of options that, among other things, allow the user to...
 
-  * Use date ranges
-  * Ban certain dates from being selected
-  * Select whether Next Day Delivery is valid
-  * Select a Next Day Delivery cut-off time
+  * Use date ranges.
+  * Deactivate specific dates and bank holidays based on region.
+  * Select whether Next Day Delivery (NDD) is valid for the store.
+  * Select a NDD cut-off time.
+
+...amongst other things.
 
 ## Table Of Contents
 
@@ -24,6 +26,8 @@ It has range of options that, among other things, allow the user to:
 
 This application was developed with <a href="http://yeoman.io/">Yeoman</a>, the most useful tool of which was the auto-reload when a watched file changed.
 
+`jQuery` is a prerequisite. It is preloaded with Yeoman.
+
 To get the development environment running locally on your machine <a href="http://nodejs.org/">NodeJS</a> and <a href="http://gruntjs.com/getting-started">Grunt</a> are prerequisites.
 
   1. Clone the repo
@@ -34,8 +38,6 @@ To get the development environment running locally on your machine <a href="http
 ### Run the development environment
 
 Do `grunt server`.
-
-__Note:__ `venda.datepicker.js` requires the latest version of the venda utils library to work. This has been included in `app/scripts/Venda` folder.
 
 ### Build the datepicker JavaScript only
 
@@ -54,9 +56,8 @@ The minimised application files will appear in the `dist` folder.
   1. [language](#language)
   1. [region](#region)
   1. [deactivateBankHolidays](#deactivatebankholidays)
-  1. [datepickerContainer](#datepickercontainer)
-  1. [selectContainer](#selectcontainer)
-  1. [hideSelectsOnDatePicker](#hideselectsondatepicker)
+  1. [hideselectsondatepicker](#hideselectsondatepicker)
+  1. [formInputName](#forminputname)
   1. [nextDayDelivery](#nextdaydelivery)
   1. [nddCutoffTime](#nddcutofftime)
   1. [highlightWeekends](#highlightweekends)
@@ -117,25 +118,15 @@ Default: `true`
 
 Example: `deactivateBankHolidays: true`
 
-### <a name='datepickercontainer'>datepickerContainer</a>
+### <a name='forminputname'>formInputName</a>
 
-The name of the element that will contain the dropdown calendar.
+The name of the form input field that is to be updated with the selected date.
 
-Type: `selector`
+Type: `string`
 
-Default: `.container`
+Default: `'selecteddatetime'`
 
-Example: `datepickerContainer: '.container'`
-
-### <a name='selectcontainer'>selectcontainer</a>
-
-The name of the element that will contain the one-line selects boxes.
-
-Type: `selector`
-
-Default: `.select`
-
-Example: `selectContainer: '.select'`
+Example: `formInputName: 'selecteddatetime'`
 
 ### <a name='hideselectsondatepicker'>hideSelectsOnDatePicker</a>
 
