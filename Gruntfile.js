@@ -289,7 +289,7 @@ module.exports = function (grunt) {
 			tobuild: {
 				files: [{
 					dest: '<%= yeoman.build %>/<%= pkg.name %>-<%= pkg.version %>.js',
-					src: '<%= yeoman.app %>/scripts/venda.datepicker.js'
+					src: '<%= yeoman.app %>/scripts/datepicker.js'
 				},{
 					src: '<%= yeoman.app %>/scripts/multiLang.json',
 					dest: '<%= yeoman.build %>/multiLang.json'

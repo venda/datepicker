@@ -1,19 +1,18 @@
 # Datepicker
 
-Datepicker allows a user to select a certain date and/or time.
-
-It has range of options that, among other things, allow the user to...
+`Datepicker` has been built specifically for with the e-commerce market in mind. It has range of options that, among other things, allow the user to:
 
   * Use date ranges.
   * Deactivate specific dates and bank holidays based on region.
   * Select whether Next Day Delivery (NDD) is valid for the store.
   * Select a NDD cut-off time.
 
-...amongst other things.
+Check out the [options](#options) to see how configurable it is.
 
 ## Table Of Contents
 
   1. [Installation](#installation)
+  1. [Usage](#usage)
   1. [Options](#options)
   1. [Output](#output)
   1. [To Do](#todo)
@@ -50,6 +49,22 @@ Do `grunt build`.
 If it fails either do `grunt build --force`, or install Ruby and Compass as they are the most likely culprits.
 
 The minimised application files will appear in the `dist` folder.
+
+## <a name='usage'>Usage</a>
+
+`Datepicker.init(options);`
+
+For example:
+
+```js
+Datepicker.init({
+  language: 'en',
+  region: 'england-and-wales',
+  formInputName: 'selecteddatetime',
+  deactivateBankHolidays: true,
+  nextDayDelivery: true
+});
+```
 
 ## <a name='options'>Options</a>
 
@@ -118,15 +133,25 @@ Default: `true`
 
 Example: `deactivateBankHolidays: true`
 
-### <a name='forminputname'>formInputName</a>
+### <a name='forminputdate'>formInputDate</a>
 
 The name of the form input field that is to be updated with the selected date.
 
 Type: `string`
 
-Default: `'selecteddatetime'`
+Default: `'selecteddate'`
 
-Example: `formInputName: 'selecteddatetime'`
+Example: `formInputDate: 'selecteddate'`
+
+### <a name='forminputname'>formInputName</a>
+
+The name of the form input field that is to be updated with the selected time.
+
+Type: `string`
+
+Default: `'selectedtime'`
+
+Example: `formInputTime: 'selectedtime'`
 
 ### <a name='hideselectsondatepicker'>hideSelectsOnDatePicker</a>
 
@@ -351,7 +376,7 @@ This tour was initiatlised with the following options:
 
 The selected date is held as an object in the format `{ date: '2014-02-03', time: 1200 }`.
 
-It can be retrieved using the Datepicker API using `Venda.Datepicker.getSelectedDateAndTime()`.
+It can be retrieved using the Datepicker API using `Datepicker.getSelectedDateAndTime()`.
 
 ## <a name='contributors'>Contributors</a>
 

@@ -1,11 +1,11 @@
 /*!
- * Venda Datepicker
+ * E-commerce datepicker
  * Copyright Venda 2014.
  */
 !function (global) {
   'use strict';
 
-  function defineModule(Venda, $) {
+  function defineModule($) {
 
     var Datepicker;
 
@@ -86,7 +86,8 @@
         language: 'en',
         region: 'england-and-wales',
         deactivateBankHolidays: true,
-        formInputName: 'selecteddatetime',
+        formInputDate: 'selecteddate',
+        formInputTime: 'selectedtime',
         nextDayDelivery: true,
         hideSelectsOnDatePicker: false,
         nddCutoffTime: 15,
@@ -111,6 +112,7 @@
         var _this = this;
         this
           .setOptions(options)
+          .clearInputs()
           .setApplicationNode()
           .getNow()
           .loadDependancies(function () {
@@ -123,10 +125,6 @@
         return this;
       },
 
-      /**
-       * Note: toType, applyTemplate, and replaceAll are taken from Venda's
-       * core utility library.
-       */
       toType: function (x) {
         return ({}).toString.call(x).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
       },
@@ -153,8 +151,12 @@
         return this;
       },
 
-      getNode: function (selector) {
-        return this.applicationNode.find(selector);
+      getNode: function (selector, searchWithinApp) {
+        if (!searchWithinApp) {
+          return $(selector);
+        } else {
+          return this.applicationNode.find(selector);
+        }
       },
 
       addMainTemplate: function () {
@@ -222,6 +224,7 @@
       changeDateInDatepicker: function (date) {
         this.getNode('.datepicker-day').removeClass('clicked');
         this.getNode('.datepicker-day[data-date="' + date + '"]').addClass('clicked');
+        if (!this.options.showTimes) { this.toggleDatepicker(); }
         return this;
       },
 
@@ -233,6 +236,7 @@
       changeTimeInDatepicker: function (time) {
         this.getNode('.datetime').removeClass('clicked');
         this.getNode('.datetime[data-time="' + time + '"]').addClass('clicked');
+        if (this.options.showTimes) { this.toggleDatepicker(); }
         return this;
       },
 
@@ -834,6 +838,25 @@
         return this.selectedDateAndTime;
       },
 
+      clearInputs: function () {
+        var date, time;
+        date = this.getNode('input[name="' + this.options.formInputDate + '"]', false);
+        time = this.getNode('input[name="' + this.options.formInputTime + '"]', false);
+        date.val('');
+        time.val('');
+        return this;
+      },
+
+      addDateToInputField: function () {
+        var date, time, datetime;
+        datetime = this.getSelectedDateAndTime();
+        date = this.getNode('input[name="' + this.options.formInputDate + '"]', false);
+        time = this.getNode('input[name="' + this.options.formInputTime + '"]', false);
+        if (datetime.date) { date.val(datetime.date); } else { date.val(''); }
+        if (datetime.time) { time.val(datetime.time); } else { time.val(''); }
+        return this;
+      },
+
       revealAPI: function () {
         return {
           init: this.init.bind(this),
@@ -902,6 +925,10 @@
           Datepicker
             .updateSelection('time', time)
             .changeTimeInDatepicker(time);
+        })
+
+        .on('click', '.adddate', function () {
+          Datepicker.addDateToInputField();
         });
 
     });
@@ -910,10 +937,6 @@
 
   }
 
-  global.Venda = global.Venda || {};
-  global.Venda.Datepicker = defineModule(
-    global.Venda,
-    global.jQuery
-  );
+  global.Datepicker = defineModule(global.jQuery);
 
 }(this);

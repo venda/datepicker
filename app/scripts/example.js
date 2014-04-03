@@ -1,4 +1,4 @@
-Venda.Datepicker.init({
+Datepicker.init({
   language: 'en',
   region: 'england-and-wales',
   formInputName: 'selecteddatetime',
@@ -23,5 +23,4 @@ Venda.Datepicker.init({
       '2014-02-30', '2014-04-11'
     ]
   }
-
 });
