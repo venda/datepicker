@@ -12,14 +12,20 @@
     Datepicker = {
 
       template: {
+        main: [
+          '<div class="mini inline">',
+          '<i class="icon-calendar"></i>',
+          '<div class="select"></div></div>',
+          '<div class="container"></div>'
+        ],
         wrapper: [
           '#{header}',
           '<div class="wrapper">',
           '<div class="datepicker">#{datepicker}</div>',
           '<div class="times">',
-          '<div class="scrollbar up"><i class="fa fa-caret-up"></i></div>',
+          '<div class="scrollbar up"><i class="icon-sort-up"></i></i></div>',
           '<div class="scrolly">#{times}</div>',
-          '<div class="scrollbar down"><i class="fa fa-caret-down"></i></div>',
+          '<div class="scrollbar down"><i class="icon-sort-down"></i></div>',
           '</div>',
           '</div>'
         ],
@@ -61,6 +67,9 @@
       selectDates: [],
       bankHolidays: [],
       isVisble: false,
+      container: '#dp-container',
+      gridContainer: '.container',
+      selectContainer: '.select',
 
       lang: {
         en: {
@@ -77,8 +86,7 @@
         language: 'en',
         region: 'england-and-wales',
         deactivateBankHolidays: true,
-        datepickerContainer: '.container',
-        selectContainer: '.select',
+        formInputName: 'selecteddatetime',
         nextDayDelivery: true,
         hideSelectsOnDatePicker: false,
         nddCutoffTime: 15,
@@ -103,13 +111,54 @@
         var _this = this;
         this
           .setOptions(options)
+          .setApplicationNode()
           .getNow()
           .loadDependancies(function () {
             _this
+              .addMainTemplate()
               .createTimeArray()
               .createTimeList()
               .calculateDatepicker();
           });
+        return this;
+      },
+
+      /**
+       * Note: toType, applyTemplate, and replaceAll are taken from Venda's
+       * core utility library.
+       */
+      toType: function (x) {
+        return ({}).toString.call(x).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+      },
+
+      applyTemplate: function (template, obj) {
+        var p, prop, param, html;
+        html = this.toType(template) === 'array' ? template.join('') : template;
+        for (p in obj) {
+          if (obj.hasOwnProperty(p)) {
+            prop = obj[p];
+            param = '#{param}'.replace('param', p);
+            html = this.replaceAll(param, prop, html);
+          }
+        }
+        return html;
+      },
+
+      replaceAll: function (find, replace, str) {
+        return str.replace(new RegExp(find, 'g'), replace);
+      },
+
+      setApplicationNode: function () {
+        this.applicationNode = $(this.container);
+        return this;
+      },
+
+      getNode: function (selector) {
+        return this.applicationNode.find(selector);
+      },
+
+      addMainTemplate: function () {
+        $(this.container).html(this.template.main.join(''));
         return this;
       },
 
@@ -171,29 +220,29 @@
       },
 
       changeDateInDatepicker: function (date) {
-        $('.datepicker-day').removeClass('clicked');
-        $('.datepicker-day[data-date="' + date + '"]').addClass('clicked');
+        this.getNode('.datepicker-day').removeClass('clicked');
+        this.getNode('.datepicker-day[data-date="' + date + '"]').addClass('clicked');
         return this;
       },
 
       changeDateInSelect: function (date) {
-        $('option[data-date="' + date + '"]').prop('selected', 'selected');
+        this.getNode('option[data-date="' + date + '"]').prop('selected', 'selected');
         return this;
       },
 
       changeTimeInDatepicker: function (time) {
-        $('.datetime').removeClass('clicked');
-        $('.datetime[data-time="' + time + '"]').addClass('clicked');
+        this.getNode('.datetime').removeClass('clicked');
+        this.getNode('.datetime[data-time="' + time + '"]').addClass('clicked');
         return this;
       },
 
       changeTimeInSelect: function (time) {
-        $('option[data-time="' + time + '"]').prop('selected', 'selected');
+        this.getNode('option[data-time="' + time + '"]').prop('selected', 'selected');
         return this;
       },
 
       getHeader: function (size) {
-        return util.applyTemplate(this.template.header, this.getHeaderObj(size));
+        return this.applyTemplate(this.template.header, this.getHeaderObj(size));
       },
 
       getDateSelect: function () {
@@ -208,7 +257,7 @@
               .replace('#{value}', this.getShortDate(day), 'gi');
             options.push(option);
           }
-          html = util.applyTemplate(this.template.selectDate, {
+          html = this.applyTemplate(this.template.selectDate, {
             options: options.join('')
           });
           this.selectDates = [];
@@ -230,7 +279,7 @@
               .replace('#{time}', thisTime.hr + '' + thisTime.mi);
             options.push(option);
           }
-          html = util.applyTemplate(this.template.selectTime, {
+          html = this.applyTemplate(this.template.selectTime, {
             options: options.join('')
           });
           return html;
@@ -255,12 +304,12 @@
 
       toggleDatepicker: function () {
         if (this.isVisble) {
-          $(this.options.datepickerContainer).hide();
-          if (this.options.hideSelectsOnDatePicker) { $('.mini').show(); }
+          $(this.gridContainer).hide();
+          if (this.options.hideSelectsOnDatePicker) { this.getNode('.mini').show(); }
         } else {
-          $(this.options.datepickerContainer).show();
+          $(this.gridContainer).show();
           this.initTimeBar();
-          if (this.options.hideSelectsOnDatePicker) { $('.mini').hide(); }
+          if (this.options.hideSelectsOnDatePicker) { this.getNode('.mini').hide(); }
         }
         this.isVisble = !this.isVisble;
         return this;
@@ -405,13 +454,13 @@
           datepicker: this.generateDatepicker()
         };
         if (this.options.showTimes) { obj.times = this.html.timeList; }
-        this.html.all = util.applyTemplate(this.template.wrapper, obj);
+        this.html.all = this.applyTemplate(this.template.wrapper, obj);
         return this;
       },
 
       writeHTML: function () {
-        $(this.options.selectContainer).html(this.html.select);
-        $(this.options.datepickerContainer).html(this.html.all);
+        this.getNode(this.selectContainer).html(this.html.select);
+        this.getNode(this.gridContainer).html(this.html.all);
         return this;
       },
 
@@ -420,10 +469,10 @@
           this.toggleHeaderButton('.previous');
         }
         if (!this.options.showTimes) {
-          $('.times').remove();
-          $('.datepicker').css('borderRight', '0');
-          $('.monthyear.large').width('199');
-          $('.direction.large').width('70');
+          this.getNode('.times').remove();
+          this.getNode('.datepicker').css('borderRight', '0');
+          this.getNode('.monthyear.large').width('199');
+          this.getNode('.direction.large').width('70');
         }
         if (this.options.useRange) {
           if (this.disableNextButton()) {
@@ -434,7 +483,7 @@
       },
 
       toggleHeaderButton: function (selector) {
-        $('.header').find(selector).removeClass('on');
+        this.getNode('.header').find(selector).removeClass('on');
         return this;
       },
 
@@ -490,7 +539,7 @@
       },
 
       getShortDate: function (day) {
-        return util.applyTemplate('#{year}-#{month}-#{day}', {
+        return this.applyTemplate('#{year}-#{month}-#{day}', {
           year: this.dates.current.fullYear,
           month: this.padNumber(this.dates.current.month),
           day: this.padNumber(day)
@@ -692,7 +741,7 @@
 
         html.push('</tr>');
 
-        return util.applyTemplate(this.template.datepicker, {
+        return this.applyTemplate(this.template.datepicker, {
           daynames: this.getDays(),
           days: html.join('')
         });
@@ -705,10 +754,10 @@
 
       toggleScrollbarHighlight: function () {
         var $wrapper, pos, scrollHeight, height, $up, $down;
-        $wrapper = $('.scrolly');
+        $wrapper = this.getNode('.scrolly');
         pos = $wrapper.scrollTop();
-        $up = $('.scrollbar.up');
-        $down = $('.scrollbar.down');
+        $up = this.getNode('.scrollbar.up');
+        $down = this.getNode('.scrollbar.down');
         scrollHeight = $wrapper[0].scrollHeight;
         height = $wrapper.outerHeight();
         if (pos < scrollHeight - height) { $down.addClass('active'); }
@@ -723,7 +772,7 @@
 
       scrollListContent: function (direction) {
         var pos, $wrapper, speed;
-        $wrapper = $('.scrolly');
+        $wrapper = this.getNode('.scrolly');
         pos = $wrapper.scrollTop();
         speed = this.options.scrollSpeed;
         $wrapper.scrollTop(direction === 'up' ? pos - speed : pos + speed);
@@ -733,7 +782,7 @@
 
       scrollStart: function (direction) {
         var _this = this;
-        if (['mobile', 'tablet'].contains(this.device) || !this.options.largeDeviceSmoothScroll) {
+        if (['mobile', 'tablet'].indexOf(this.device) > 0 || !this.options.largeDeviceSmoothScroll) {
           this.scrollListContent(direction);
         } else {
           (function scroller() {
@@ -768,7 +817,6 @@
 
       clearSelectedDate: function () {
         this.selectedDateAndTime = {};
-        $('.message').html('');
         return this;
       },
 
@@ -797,62 +845,64 @@
 
     $(function () {
 
-      $('body').on('click', '.direction.on', function () {
-        Datepicker.calculateDatepicker({
-          month: $(this).data('month'),
-          year: $(this).data('year')
+      Datepicker.applicationNode
+
+        .on('click', '.direction.on', function () {
+          Datepicker.calculateDatepicker({
+            month: $(this).data('month'),
+            year: $(this).data('year')
+          });
+        })
+
+        .on('click', '.datepicker-day', function () {
+          var date = $(this).data('date');
+          Datepicker
+            .changeDateInDatepicker(date)
+            .updateSelection('date', date)
+            .changeDateInSelect(date);
+        })
+
+        .on('click', '.datetime', function () {
+          var time = $(this).data('time');
+          Datepicker
+            .changeTimeInDatepicker(time)
+            .updateSelection('time', time)
+            .changeTimeInSelect(time);
+        })
+
+        .on('mousedown', '.scrollbar.up', function () {
+          if ($(this).hasClass('active')) {
+            Datepicker.scrollStart('up');
+          }
+        })
+
+        .on('mousedown', '.scrollbar.down', function () {
+          if ($(this).hasClass('active')) {
+            Datepicker.scrollStart('down');
+          }
+        })
+
+        .on('mouseup', '.scrollbar.up, .scrollbar.down', function () {
+          Datepicker.scrollStop();
+        })
+
+        .on('click', '.icon-calendar', function () {
+          Datepicker.toggleDatepicker();
+        })
+
+        .on('change', '.availabledates', function () {
+          var date = Datepicker.getNode('.availabledates option:selected').data('date');
+          Datepicker
+            .updateSelection('date', date)
+            .changeDateInDatepicker(date);
+        })
+
+        .on('change', '.availabletimes', function () {
+          var time = Datepicker.getNode('.availabletimes option:selected').data('time');
+          Datepicker
+            .updateSelection('time', time)
+            .changeTimeInDatepicker(time);
         });
-      });
-
-      $(Datepicker.options.datepickerContainer).on('click', '.datepicker-day', function () {
-        var date = $(this).data('date');
-        Datepicker
-          .changeDateInDatepicker(date)
-          .updateSelection('date', date)
-          .changeDateInSelect(date);
-      });
-
-      $(Datepicker.options.datepickerContainer).on('click', '.datetime', function () {
-        var time = $(this).data('time');
-        Datepicker
-          .changeTimeInDatepicker(time)
-          .updateSelection('time', time)
-          .changeTimeInSelect(time);
-      });
-
-      $(Datepicker.options.datepickerContainer).on('mousedown', '.scrollbar.up', function () {
-        if ($(this).hasClass('active')) {
-          Datepicker.scrollStart('up');
-        }
-      });
-
-      $(Datepicker.options.datepickerContainer).on('mousedown', '.scrollbar.down', function () {
-        if ($(this).hasClass('active')) {
-          Datepicker.scrollStart('down');
-        }
-      });
-
-      $(Datepicker.options.datepickerContainer).on('mouseup', '.scrollbar.up, .scrollbar.down', function () {
-        Datepicker.scrollStop();
-      });
-
-      $('.fa-calendar').click(function () {
-        Datepicker.toggleDatepicker();
-      });
-
-      $('body').on('change', '.availabledates', function () {
-        var date = $('.availabledates option:selected').data('date');
-        Datepicker
-          .updateSelection('date', date)
-          .changeDateInDatepicker(date);
-      });
-
-      $('body').on('change', '.availabletimes', function () {
-        var time = $('.availabletimes option:selected').data('time');
-        Datepicker
-          .updateSelection('time', time)
-          .changeTimeInDatepicker(time);
-      });
 
     });
 

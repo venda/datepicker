@@ -1,20 +1,14 @@
 Venda.Datepicker.init({
-
   language: 'en',
   region: 'england-and-wales',
+  formInputName: 'selecteddatetime',
   deactivateBankHolidays: true,
-
-  datepickerContainer: '.container',
-  selectContainer: '.select',
   nextDayDelivery: true,
   hideSelectsOnDatePicker: false,
-
   nddCutoffTime: 13,
-
   useRange: false,
   rangeInDays: 2,
   highlightWeekends: false,
-
   firstDayDiff: 1,
   largeDeviceSmoothScroll: true,
   scrollSpeed: 60,
@@ -22,7 +16,6 @@ Venda.Datepicker.init({
   showTimes: true,
   startHour: 9,
   endHour: 22,
-
   inactive: {
     monthsStartAtZero: false,
     blockDay: [6],
