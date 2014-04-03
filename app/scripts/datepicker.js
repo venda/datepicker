@@ -281,7 +281,6 @@
             option = optionTmpl
               .replace(/#{value}/g, thisTime.hr + ':' + thisTime.mi)
               .replace('#{time}', thisTime.hr + '' + thisTime.mi);
-            console.log(option);
             options.push(option);
           }
           html = this.applyTemplate(this.template.selectTime, {
