@@ -279,7 +279,7 @@
           for (var i = 0, l = this.timeArray.length; i < l; i++) {
             thisTime = this.timeArray[i];
             option = optionTmpl
-              .replace('#{value}', thisTime.hr + ':' + thisTime.mi, 'g')
+              .replace(/#{value}/g, thisTime.hr + ':' + thisTime.mi)
               .replace('#{time}', thisTime.hr + '' + thisTime.mi);
             options.push(option);
           }
