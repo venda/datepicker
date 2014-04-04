@@ -1,3 +1,7 @@
+.adddate:disabled {
+  opacity: 0.5;
+}
+
 #dp-container {
   font-family: arial;
   font-size: 1em;

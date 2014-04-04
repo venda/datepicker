@@ -224,7 +224,11 @@
       changeDateInDatepicker: function (date) {
         this.getNode('.datepicker-day').removeClass('clicked');
         this.getNode('.datepicker-day[data-date="' + date + '"]').addClass('clicked');
-        if (!this.options.showTimes) { this.toggleDatepicker(); }
+        if (!this.options.showTimes || this.options.showTimes && this.selectedDateAndTime.time) {
+          this
+            .toggleAddButton('enable')
+            .toggleDatepicker();
+        }
         return this;
       },
 
@@ -236,7 +240,11 @@
       changeTimeInDatepicker: function (time) {
         this.getNode('.datetime').removeClass('clicked');
         this.getNode('.datetime[data-time="' + time + '"]').addClass('clicked');
-        if (this.options.showTimes) { this.toggleDatepicker(); }
+        if (this.options.showTimes && this.selectedDateAndTime.date) {
+          this
+            .toggleAddButton('enable')
+            .toggleDatepicker();
+        }
         return this;
       },
 
@@ -311,11 +319,30 @@
           $(this.gridContainer).hide();
           if (this.options.hideSelectsOnDatePicker) { this.getNode('.mini').show(); }
         } else {
+          this
+            .clearUserSelection()
+            .initTimeBar();
           $(this.gridContainer).show();
-          this.initTimeBar();
           if (this.options.hideSelectsOnDatePicker) { this.getNode('.mini').hide(); }
         }
         this.isVisble = !this.isVisble;
+        return this;
+      },
+
+      toggleAddButton: function (type) {
+        type = type || 'enable';
+        if (type === 'disable') { this.getNode('.adddate').prop('disabled', true); }
+        if (type === 'enable') { this.getNode('.adddate').prop('disabled', false); }
+        return this;
+      },
+
+      clearUserSelection: function () {
+        this
+          .clearSelectedDate()
+          .clearInputs()
+          .generateDatepickerHTML()
+          .writeHTML()
+          .toggleAddButton('disable');
         return this;
       },
 
@@ -338,6 +365,7 @@
           .generateDatepickerHTML()
           .generateOneLiner()
           .writeHTML()
+          .toggleAddButton('disable')
           .updateElements()
           .initTimeBar();
         return this;
@@ -937,6 +965,12 @@
 
   }
 
-  global.Datepicker = defineModule(global.jQuery);
+  if (typeof exports === 'object') {
+    module.exports = defineModule(global.jQuery);
+  } else if (typeof define === 'function' && define.amd) {
+    define([global.jQuery], defineModule);
+  } else {
+    global.Datepicker = defineModule(global.jQuery);
+  }
 
 }(this);
