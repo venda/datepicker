@@ -1,6 +1,6 @@
-# Datepicker
+# DatePicker
 
-`Datepicker` has been built specifically for with the e-commerce market in mind. It has range of options that, among other things, allow the user to:
+`DatePicker` has been built specifically for with the e-commerce market in mind. It has range of options that, among other things, allow the user to:
 
   * Use date ranges.
   * Deactivate specific dates and bank holidays based on region.
@@ -52,12 +52,12 @@ The minimised application files will appear in the `dist` folder.
 
 ## <a name='usage'>Usage</a>
 
-`Datepicker.init(options);`
+`DatePicker.init(options);`
 
 For example:
 
 ```js
-Datepicker.init({
+DatePicker.init({
   language: 'en',
   region: 'england-and-wales',
   formInputName: 'selecteddatetime',
@@ -376,7 +376,7 @@ This tour was initiatlised with the following options:
 
 The selected date is held as an object in the format `{ date: '2014-02-03', time: 1200 }`.
 
-It can be retrieved using the Datepicker API using `Datepicker.getSelectedDateAndTime()`.
+It can be retrieved using the DatePicker API using `DatePicker.getSelectedDateAndTime()`.
 
 ## <a name='contributors'>Contributors</a>
 

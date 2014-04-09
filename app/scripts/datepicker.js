@@ -7,9 +7,9 @@
 
   function defineModule($) {
 
-    var Datepicker;
+    var DatePicker;
 
-    Datepicker = {
+    DatePicker = {
 
       template: {
         main: [
@@ -129,7 +129,7 @@
               .addMainTemplate()
               .createTimeArray()
               .createTimeList()
-              .calculateDatepicker();
+              .calculateDatePicker();
           });
         return this;
       },
@@ -289,13 +289,13 @@
        * Change date in date picker if there is a change in the date dropdown
        * @param  {string} date Date string
        */
-      changeDateInDatepicker: function (date) {
+      changeDateInDatePicker: function (date) {
         this.getNode('.datepicker-day').removeClass('clicked');
         this.getNode('.datepicker-day[data-date="' + date + '"]').addClass('clicked');
         if (!this.options.showTimes || this.options.showTimes && this.selectedDateAndTime.time) {
           this
             .toggleAddButton('enable')
-            .toggleDatepicker();
+            .toggleDatePicker();
         }
         return this;
       },
@@ -313,13 +313,13 @@
        * Change time in date picker if there is a change in the time dropdown
        * @param  {string} date Time string
        */
-      changeTimeInDatepicker: function (time) {
+      changeTimeInDatePicker: function (time) {
         this.getNode('.datetime').removeClass('clicked');
         this.getNode('.datetime[data-time="' + time + '"]').addClass('clicked');
         if (this.options.showTimes && this.selectedDateAndTime.date) {
           this
             .toggleAddButton('enable')
-            .toggleDatepicker();
+            .toggleDatePicker();
         }
         return this;
       },
@@ -411,7 +411,7 @@
       /**
        * Open/close the datepicker
        */
-      toggleDatepicker: function () {
+      toggleDatePicker: function () {
         if (this.isVisble) {
           $(this.gridContainer).hide();
           if (this.options.hideSelectsOnDatePicker) { this.getNode('.mini').show(); }
@@ -444,7 +444,7 @@
         this
           .clearSelectedDate()
           .clearInputs()
-          .generateDatepickerHTML()
+          .generateDatePickerHTML()
           .writeHTML()
           .toggleAddButton('disable');
         return this;
@@ -469,14 +469,14 @@
        * Creates a brand new datepicker
        * @param  {object} obj Optional object containing date information
        */
-      calculateDatepicker: function (obj) {
+      calculateDatePicker: function (obj) {
         this
           .clearSelectedDate()
           .getCurrent(obj)
           .getPrevious()
           .getNext()
           .doChecks()
-          .generateDatepickerHTML()
+          .generateDatePickerHTML()
           .generateDropdownHTML()
           .writeHTML()
           .toggleAddButton('disable')
@@ -654,12 +654,12 @@
       /**
        * Generates the datepicker HTML and adds it to the app HTML container.
        */
-      generateDatepickerHTML: function () {
+      generateDatePickerHTML: function () {
         var obj, headerHTML;
         headerHTML = this.getHeader('large');
         obj = {
           header: headerHTML,
-          datepicker: this.generateDatepicker()
+          datepicker: this.generateDatePicker()
         };
         if (this.options.showTimes) { obj.times = this.html.timeList; }
         this.html.all = this.applyTemplate(this.template.wrapper, obj);
@@ -995,10 +995,10 @@
        * Builds the date picker HTML
        * @return {string} HTML
        */
-      generateDatepicker: function () {
+      generateDatePicker: function () {
 
         var tdClass, firstDay, startingDay, monthLength, html, day,
-            isDatepickerDay, week, shortdate, isInactiveDay, isBankHoliday,
+            isDatePickerDay, week, shortdate, isInactiveDay, isBankHoliday,
             isBlockDay;
 
         html = [];
@@ -1014,7 +1014,7 @@
           for (var j = 0; j <= 6; j++) {
 
             tdClass = [];
-            isDatepickerDay = (day <= monthLength && (i > 0 || j >= startingDay));
+            isDatePickerDay = (day <= monthLength && (i > 0 || j >= startingDay));
             shortdate = this.getShortDate(day);
             isInactiveDay = this.hasInactiveDates() && this.isInactive(day);
             isBankHoliday = this.options.deactivateBankHolidays
@@ -1022,7 +1022,7 @@
               && this.isBankHoliday(shortdate) > -1;
             isBlockDay = this.isBlockedDay(j);
 
-            if (isDatepickerDay) {
+            if (isDatePickerDay) {
 
               if (this.isToday(day)) {
                 tdClass.push('today');
@@ -1225,10 +1225,10 @@
       /**
        * All DOM work is confined to the application node context
        */
-      Datepicker.applicationNode
+      DatePicker.applicationNode
 
         .on('click', '.direction.on', function () {
-          Datepicker.calculateDatepicker({
+          DatePicker.calculateDatePicker({
             month: $(this).data('month'),
             year: $(this).data('year')
           });
@@ -1236,61 +1236,61 @@
 
         .on('click', '.datepicker-day', function () {
           var date = $(this).data('date');
-          Datepicker
-            .changeDateInDatepicker(date)
+          DatePicker
+            .changeDateInDatePicker(date)
             .updateSelection('date', date)
             .changeDateInSelect(date);
         })
 
         .on('click', '.datetime', function () {
           var time = $(this).data('time');
-          Datepicker
-            .changeTimeInDatepicker(time)
+          DatePicker
+            .changeTimeInDatePicker(time)
             .updateSelection('time', time)
             .changeTimeInSelect(time);
         })
 
         .on('mousedown', '.scrollbar.up', function () {
           if ($(this).hasClass('active')) {
-            Datepicker.scrollStart('up');
+            DatePicker.scrollStart('up');
           }
         })
 
         .on('mousedown', '.scrollbar.down', function () {
           if ($(this).hasClass('active')) {
-            Datepicker.scrollStart('down');
+            DatePicker.scrollStart('down');
           }
         })
 
         .on('mouseup', '.scrollbar.up, .scrollbar.down', function () {
-          Datepicker.scrollStop();
+          DatePicker.scrollStop();
         })
 
         .on('click', '.icon-calendar', function () {
-          Datepicker.toggleDatepicker();
+          DatePicker.toggleDatePicker();
         })
 
         .on('change', '.availabledates', function () {
-          var date = Datepicker.getNode('.availabledates option:selected').data('date');
-          Datepicker
+          var date = DatePicker.getNode('.availabledates option:selected').data('date');
+          DatePicker
             .updateSelection('date', date)
-            .changeDateInDatepicker(date);
+            .changeDateInDatePicker(date);
         })
 
         .on('change', '.availabletimes', function () {
-          var time = Datepicker.getNode('.availabletimes option:selected').data('time');
-          Datepicker
+          var time = DatePicker.getNode('.availabletimes option:selected').data('time');
+          DatePicker
             .updateSelection('time', time)
-            .changeTimeInDatepicker(time);
+            .changeTimeInDatePicker(time);
         })
 
         .on('click', '.adddate', function () {
-          Datepicker.addDateToInputField();
+          DatePicker.addDateToInputField();
         });
 
     });
 
-    return Datepicker.revealAPI();
+    return DatePicker.revealAPI();
 
   }
 
@@ -1303,7 +1303,7 @@
   } else if (typeof define === 'function' && define.amd) {
     define([global.jQuery], defineModule);
   } else {
-    global.Datepicker = defineModule(global.jQuery);
+    global.DatePicker = defineModule(global.jQuery);
   }
 
 }(this);

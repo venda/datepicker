@@ -1,4 +1,4 @@
-Datepicker.init({
+DatePicker.init({
   language: 'en',
   region: 'england-and-wales',
   formInputName: 'selecteddatetime',
