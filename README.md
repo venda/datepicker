@@ -70,7 +70,7 @@ Datepicker.init({
 
   1. [language](#language)
   1. [region](#region)
-  1. [deactivateBankHolidays](#deactivatebankholidays)
+  1. [useBankHolidays](#usebankholidays)
   1. [hideselectsondatepicker](#hideselectsondatepicker)
   1. [formInputName](#forminputname)
   1. [nextDayDelivery](#nextdaydelivery)
@@ -121,7 +121,7 @@ Default: `england-and-wales`
 
 Example: `region: 'england-and-wales'`
 
-### <a name='deactivatebankholidays'>deactivateBankHolidays</a>
+### <a name='usebankholidays'>useBankHolidays</a>
 
 Making this option `true` will disable the calendar for the bank holidays for the specified region.
 
@@ -131,7 +131,7 @@ Type: `boolean`
 
 Default: `true`
 
-Example: `deactivateBankHolidays: true`
+Example: `useBankHolidays: true`
 
 ### <a name='forminputdate'>formInputDate</a>
 
