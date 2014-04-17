@@ -384,7 +384,9 @@ It can be retrieved using the DatePicker API using `DatePicker.getSelectedDateAn
 
 ## <a name='license'>License</a>
 
-Copyright (c) 2014 Venda Ltd
+The MIT License (MIT)
+
+Copyright (c) 2014 Venda Group Limited
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
