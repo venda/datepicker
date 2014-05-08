@@ -26,7 +26,13 @@
     "connect-livereload": "~0.3.2",
     "grunt-wrap": "~0.3.0",
     "grunt-indent": "~0.1.4",
-    "grunt-json-minify": "~0.4.0"
+    "grunt-json-minify": "~0.4.0",
+    "mocha": "~1.18.2",
+    "sinon": "~1.9.1",
+    "chai": "~1.9.1",
+    "gulp-jshint": "~1.5.5",
+    "gulp": "~3.6.2",
+    "jshint-stylish": "~0.2.0"
   },
   "engines": {
     "node": ">=0.8.0"

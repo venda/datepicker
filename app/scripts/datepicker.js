@@ -112,7 +112,6 @@
         }
       },
 
-
       /**
        * Initialise module.
        * @param  {object} options Options object
@@ -311,7 +310,7 @@
 
       /**
        * Change time in date picker if there is a change in the time dropdown
-       * @param  {string} date Time string
+       * @param  {string} time Time string
        */
       changeTimeInDatePicker: function (time) {
         this.getNode('.datetime').removeClass('clicked');
@@ -326,13 +325,12 @@
 
       /**
        * Change time in time dropdown if there is a change in the datepicker time
-       * @param  {string} date Time string
+       * @param  {string} time Time string
        */
       changeTimeInSelect: function (time) {
         this.getNode('option[data-time="' + time + '"]').prop('selected', 'selected');
         return this;
       },
-
 
       /** Returns header HTML */
       getHeader: function (size) {
@@ -1201,8 +1199,16 @@
         datetime = this.getSelectedDateAndTime();
         date = this.getNode('input[name="' + this.options.formInputDate + '"]', true);
         time = this.getNode('input[name="' + this.options.formInputTime + '"]', true);
-        if (datetime.date) { date.val(datetime.date); } else { date.val(''); }
-        if (datetime.time) { time.val(datetime.time); } else { time.val(''); }
+        if (datetime.date) {
+          date.val(datetime.date);
+        } else {
+          date.val('');
+        }
+        if (datetime.time) {
+          time.val(datetime.time);
+        } else {
+          time.val('');
+        }
         return this;
       },
 

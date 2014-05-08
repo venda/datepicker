@@ -7,7 +7,7 @@
   * Select whether Next Day Delivery (NDD) is valid for the store.
   * Select a NDD cut-off time.
 
-Check out the [options](#options) to see how configurable it is.
+Make sure you check out the configuration [options](#options).
 
 ## Table Of Contents
 
@@ -89,7 +89,7 @@ DatePicker.init({
 
 ### <a name='language'>language</a>
 
-The language in which the calendar will display. 
+The language in which the calendar will display.
 
 Current choices are:
 
