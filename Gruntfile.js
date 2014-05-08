@@ -128,13 +128,13 @@ module.exports = function (grunt) {
 
 		mocha: {
 			all: {
+        src: ['test/index.html']
+      },
 				options: {
 					run: true,
 					log: true,
-					reporter: 'Spec',
-					urls: ['http://localhost:<%= connect.options.port %>/index.html']
+					reporter: 'Spec'
 				}
-			}
 		},
 
 		compass: {
@@ -347,9 +347,9 @@ module.exports = function (grunt) {
 	});
 
 	grunt.registerTask('test', [
-		'clean:server',
-		'concurrent:test',
-		'connect:test',
+		//'clean:server',
+		//'concurrent:test',
+		//'connect:test',
 		'mocha'
 	]);
 
